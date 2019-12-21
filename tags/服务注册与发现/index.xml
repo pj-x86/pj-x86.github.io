@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>服务注册与发现 on pj-x86&#39;s blog</title>
+    <link>https://pj-x86.github.io/tags/%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/</link>
+    <description>Recent content in 服务注册与发现 on pj-x86&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 21 Dec 2019 23:37:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://pj-x86.github.io/tags/%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go Kit示例源码分析之服务发现</title>
+      <link>https://pj-x86.github.io/2019/go-kit%E7%A4%BA%E4%BE%8B%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8B%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/</link>
+      <pubDate>Sat, 21 Dec 2019 23:37:57 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/2019/go-kit%E7%A4%BA%E4%BE%8B%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8B%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/</guid>
+      <description>说明：官方的 stringsvc3/addsvc 目前并没有添加服务注册的演示代码，个人在此位置提交了一份，可供参考。</description>
+    </item>
+    
+  </channel>
+</rss>
