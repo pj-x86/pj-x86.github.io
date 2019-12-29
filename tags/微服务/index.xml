@@ -6,10 +6,24 @@
     <description>Recent content in 微服务 on pj-x86&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 21 Dec 2019 23:37:57 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 29 Dec 2019 14:48:09 +0800</lastBuildDate>
     
 	<atom:link href="https://pj-x86.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>改造Go Kit官方示例对接eureka</title>
+      <link>https://pj-x86.github.io/2019/%E6%94%B9%E9%80%A0go-kit%E5%AE%98%E6%96%B9%E7%A4%BA%E4%BE%8B%E5%AF%B9%E6%8E%A5eureka/</link>
+      <pubDate>Sun, 29 Dec 2019 14:48:09 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/2019/%E6%94%B9%E9%80%A0go-kit%E5%AE%98%E6%96%B9%E7%A4%BA%E4%BE%8B%E5%AF%B9%E6%8E%A5eureka/</guid>
+      <description>前言 近期学习 go-kit 的官方示例时，发现并未有对接 eureka 的参考代码，而我司目前的微服务架构是基于 spring cloud ，服务注册中心用的是 eureka ，因此，便试着改造一下官方的例子，也顺便验证一下 go-kit 框架的服务注册与发现功能。以下为基本操作过程。
+操作过程  启动 eureka server ，单节点  为了简单，本人使用了 docker 部署方式，命令如下：
+docker run -it --rm -p 8761:8761 --name eureka springcloud/eureka 启动成功后，通过浏览器访问 http://127.0.0.1:8761 可以打开 eureka 控制台主页。
+修改官方示例代码  修改代码上传于此位置，主要修改说明：
+服务提供者: stringsvc3 和 addsvc 增加向 eureka server 进行服务注册。 服务消费者: apigateway 增加从 eureka server 获取 stringsvc 和 addsvc 的实例列表。
+启动服务提供者  ./addsvc -registry.type eureka -eureka.addr 127.0.0.1:8761 ./stringsvc3 -registry.type eureka -eureka.addr 127.0.0.1:8761 启动成功后，会周期打印出与 eureka 的心跳日志，类似如下。</description>
+    </item>
     
     <item>
       <title>Go Kit示例源码分析之服务发现</title>
