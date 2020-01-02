@@ -6,10 +6,46 @@
     <description>Recent content in Tags on pj-x86&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 29 Dec 2019 14:48:09 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jan 2020 23:17:27 +0800</lastBuildDate>
     
 	<atom:link href="https://pj-x86.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>golang</title>
+      <link>https://pj-x86.github.io/tags/golang/</link>
+      <pubDate>Thu, 02 Jan 2020 23:17:27 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>logging</title>
+      <link>https://pj-x86.github.io/tags/logging/</link>
+      <pubDate>Thu, 02 Jan 2020 23:17:27 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/tags/logging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lumberjack</title>
+      <link>https://pj-x86.github.io/tags/lumberjack/</link>
+      <pubDate>Thu, 02 Jan 2020 23:17:27 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/tags/lumberjack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zap</title>
+      <link>https://pj-x86.github.io/tags/zap/</link>
+      <pubDate>Thu, 02 Jan 2020 23:17:27 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/tags/zap/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>eureka</title>
@@ -26,15 +62,6 @@
       <pubDate>Sun, 29 Dec 2019 14:48:09 +0800</pubDate>
       
       <guid>https://pj-x86.github.io/tags/go-kit/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>https://pj-x86.github.io/tags/golang/</link>
-      <pubDate>Sun, 29 Dec 2019 14:48:09 +0800</pubDate>
-      
-      <guid>https://pj-x86.github.io/tags/golang/</guid>
       <description></description>
     </item>
     

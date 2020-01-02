@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Jerry Peng">
+  
+  
+  
+  <link rel="prev" href="https://pj-x86.github.io/2019/%E6%94%B9%E9%80%A0go-kit%E5%AE%98%E6%96%B9%E7%A4%BA%E4%BE%8B%E5%AF%B9%E6%8E%A5eureka/" />
+  
+  <link rel="canonical" href="https://pj-x86.github.io/2020/%E5%9F%BA%E4%BA%8Ezap%E5%92%8Clumberjack%E5%AE%9E%E7%8E%B0%E6%BB%9A%E5%8A%A8%E6%97%A5%E5%BF%97/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           基于zap和lumberjack实现滚动日志 | pj-x86&#39;s blog
+       
+  </title>
+  <meta name="title" content="基于zap和lumberjack实现滚动日志 | pj-x86&#39;s blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/pj-x86.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "基于zap和lumberjack实现滚动日志",
+    "headline" : "基于zap和lumberjack实现滚动日志",
+    "description" : "前言 本文学习了如何使用 uber 开源的高性能日志库 zap ，以下为完整程序，稍做完善，可用于生产环境。\n\/\/ 作者: pj-x86 \/\/ 日期: 2020-01-02 \/\/ 功能: 本程序基于 zap 和 lumberjack 实现以下日志基本功能： \/\/ 1. 日志输出到文件 \/\/ 2. 滚动日志输出，自动根据文件大小、日期进行文件切割、归档等 \/\/ 3. 支持多种日志级别，如 debug\/info\/error 等 \/\/ 4. 支持结构化日志输出，如 JSON 日志格式 \/\/ 5. 支持打印文件名、行号等信息 \/\/ 6. 支持不同环境采用不同的日志输出格式  package main import ( \x26#34;net\/http\x26#34; \x26#34;time\x26#34; \x26#34;go.uber.org\/zap\x26#34; \x26#34;go.uber.org\/zap\/zapcore\x26#34; \x26#34;gopkg.in\/natefinch\/lumberjack.v2\x26#34; ) func getEncoder(env string) zapcore.Encoder { encoderConfig := zap.NewProductionEncoderConfig() encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder \/\/采用 ISO8601 时间格式 \tencoderConfig.EncodeLevel = zapcore.CapitalLevelEncoder \/\/日志级别名称全大写 \tif env == \x26#34;production\x26#34; || env == \x26#34;prod\x26#34; { \/\/生产环境使用对日志监控系统友好的 json 格式输出 \treturn zapcore.",
+    "inLanguage" : "zh-cn",
+    "author" : "Jerry Peng",
+    "creator" : "Jerry Peng",
+    "publisher": "Jerry Peng",
+    "accountablePerson" : "Jerry Peng",
+    "copyrightHolder" : "Jerry Peng",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-01-02 23:17:27 \x2b0800 CST",
+    "dateModified" : "2020-01-02 23:17:27 \x2b0800 CST",
+    "url" : "https:\/\/pj-x86.github.io\/2020\/%E5%9F%BA%E4%BA%8Ezap%E5%92%8Clumberjack%E5%AE%9E%E7%8E%B0%E6%BB%9A%E5%8A%A8%E6%97%A5%E5%BF%97\/",
+    "wordCount" : "325",
+    "keywords" : [ "golang","logging","zap","lumberjack","", "pj-x86\x27s blog"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://pj-x86.github.io">pj-x86&#39;s blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">博客</a>
+                
+                <a class="menu-item" href="/categories/" title="">分类</a>
+                
+                <a class="menu-item" href="/tags/" title="">标签</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://pj-x86.github.io">pj-x86&#39;s blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">博客</a>
+                
+                <a class="menu-item" href="/categories/" title="">分类</a>
+                
+                <a class="menu-item" href="/tags/" title="">标签</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">基于zap和lumberjack实现滚动日志</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://pj-x86.github.io" rel="author">Jerry Peng</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-01-02 itemprop="datePublished">January 2, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://pj-x86.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="heading">前言</h2>
+<p>本文学习了如何使用 uber 开源的高性能日志库 zap ，以下为完整程序，稍做完善，可用于生产环境。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 作者: pj-x86
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 日期: 2020-01-02
+</span><span style="color:#75715e"></span><span style="color:#75715e">// 功能: 本程序基于 zap 和 lumberjack 实现以下日志基本功能：
+</span><span style="color:#75715e"></span><span style="color:#75715e">//   1. 日志输出到文件
+</span><span style="color:#75715e"></span><span style="color:#75715e">//   2. 滚动日志输出，自动根据文件大小、日期进行文件切割、归档等
+</span><span style="color:#75715e"></span><span style="color:#75715e">//   3. 支持多种日志级别，如 debug/info/error 等
+</span><span style="color:#75715e"></span><span style="color:#75715e">//   4. 支持结构化日志输出，如 JSON 日志格式
+</span><span style="color:#75715e"></span><span style="color:#75715e">//   5. 支持打印文件名、行号等信息
+</span><span style="color:#75715e"></span><span style="color:#75715e">//   6. 支持不同环境采用不同的日志输出格式
+</span><span style="color:#75715e"></span>
+<span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;net/http&#34;</span>
+	<span style="color:#e6db74">&#34;time&#34;</span>
+
+	<span style="color:#e6db74">&#34;go.uber.org/zap&#34;</span>
+	<span style="color:#e6db74">&#34;go.uber.org/zap/zapcore&#34;</span>
+	<span style="color:#e6db74">&#34;gopkg.in/natefinch/lumberjack.v2&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getEncoder</span>(<span style="color:#a6e22e">env</span> <span style="color:#66d9ef">string</span>) <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">Encoder</span> {
+	<span style="color:#a6e22e">encoderConfig</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">NewProductionEncoderConfig</span>()
+	<span style="color:#a6e22e">encoderConfig</span>.<span style="color:#a6e22e">EncodeTime</span> = <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">ISO8601TimeEncoder</span>   <span style="color:#75715e">//采用 ISO8601 时间格式
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">encoderConfig</span>.<span style="color:#a6e22e">EncodeLevel</span> = <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">CapitalLevelEncoder</span> <span style="color:#75715e">//日志级别名称全大写
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;production&#34;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;prod&#34;</span> {               <span style="color:#75715e">//生产环境使用对日志监控系统友好的 json 格式输出
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">NewJSONEncoder</span>(<span style="color:#a6e22e">encoderConfig</span>)
+	}
+	<span style="color:#75715e">//其他开发测试环境，使用对人类友好的控制台格式输出
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">NewConsoleEncoder</span>(<span style="color:#a6e22e">encoderConfig</span>)
+
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getLogWriter</span>(<span style="color:#a6e22e">fileName</span> <span style="color:#66d9ef">string</span>) <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">WriteSyncer</span> {
+	<span style="color:#75715e">//file, _ := os.Create(&#34;./test.log&#34;)
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">//return zapcore.AddSync(file)
+</span><span style="color:#75715e"></span>
+	<span style="color:#75715e">//启用滚动日志，日志自动切割及归档
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">lumberJackLogger</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">lumberjack</span>.<span style="color:#a6e22e">Logger</span>{
+		<span style="color:#a6e22e">Filename</span>:   <span style="color:#a6e22e">fileName</span>,
+		<span style="color:#a6e22e">MaxSize</span>:    <span style="color:#ae81ff">300</span>, <span style="color:#75715e">// megabytes
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">MaxBackups</span>: <span style="color:#ae81ff">999</span>,
+		<span style="color:#a6e22e">MaxAge</span>:     <span style="color:#ae81ff">365</span>,  <span style="color:#75715e">// days
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">LocalTime</span>:  <span style="color:#66d9ef">true</span>, <span style="color:#75715e">// 采用当地时间
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">Compress</span>:   <span style="color:#66d9ef">false</span>,
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">AddSync</span>(<span style="color:#a6e22e">lumberJackLogger</span>)
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">initLogger</span>(<span style="color:#a6e22e">env</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">fileName</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">atomLevel</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">AtomicLevel</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">Logger</span> {
+	<span style="color:#a6e22e">encoder</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">getEncoder</span>(<span style="color:#a6e22e">env</span>)
+	<span style="color:#a6e22e">writeSyncer</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">getLogWriter</span>(<span style="color:#a6e22e">fileName</span>)
+	<span style="color:#a6e22e">core</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">NewCore</span>(<span style="color:#a6e22e">encoder</span>, <span style="color:#a6e22e">writeSyncer</span>, <span style="color:#a6e22e">atomLevel</span>) <span style="color:#75715e">//第三个参数确定日志输出级别
+</span><span style="color:#75715e"></span>
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">core</span>, <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">AddCaller</span>()) <span style="color:#75715e">//AddCaller 打印文件名、行号
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">simpleHttpGet</span>(<span style="color:#a6e22e">url</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">sugarLogger</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">SugaredLogger</span>) {
+	<span style="color:#a6e22e">sugarLogger</span>.<span style="color:#a6e22e">Debugf</span>(<span style="color:#e6db74">&#34;Trying to send GET request for %s&#34;</span>, <span style="color:#a6e22e">url</span>)
+	<span style="color:#a6e22e">resp</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#a6e22e">url</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#75715e">//sugarLogger.Errorf(&#34;Error fetching URL %s : Error = %s&#34;, url, err)
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">sugarLogger</span>.<span style="color:#a6e22e">Errorw</span>(<span style="color:#e6db74">&#34;Error fetching URL&#34;</span>, <span style="color:#e6db74">&#34;url&#34;</span>, <span style="color:#a6e22e">url</span>, <span style="color:#e6db74">&#34;error&#34;</span>, <span style="color:#a6e22e">err</span>)
+	} <span style="color:#66d9ef">else</span> {
+		<span style="color:#a6e22e">sugarLogger</span>.<span style="color:#a6e22e">Infof</span>(<span style="color:#e6db74">&#34;Success! statusCode = %s for URL %s&#34;</span>, <span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">Status</span>, <span style="color:#a6e22e">url</span>)
+		<span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">Body</span>.<span style="color:#a6e22e">Close</span>()
+	}
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#75715e">//日志对象全部定义在 main 函数内部，不作为全局变量，采用显示依赖注入，不使用隐式依赖，类似 go-kit 的设计理念
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">logger</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">Logger</span>
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sugarLogger</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">SugaredLogger</span>
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">atomLevel</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">AtomicLevel</span>
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">env</span> <span style="color:#66d9ef">string</span> = <span style="color:#e6db74">&#34;dev&#34;</span> <span style="color:#75715e">//dev-开发, test-测试, prod-生产
+</span><span style="color:#75715e"></span>
+	<span style="color:#a6e22e">atomLevel</span> = <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">NewAtomicLevelAt</span>(<span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">InfoLevel</span>)   <span style="color:#75715e">//默认 Info 日志级别
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">logger</span> = <span style="color:#a6e22e">initLogger</span>(<span style="color:#a6e22e">env</span>, <span style="color:#e6db74">&#34;./test.log&#34;</span>, <span style="color:#a6e22e">atomLevel</span>) <span style="color:#75715e">//默认创建性能最佳的 Logger 对象，对性能有要求的场景下可以使用它，仅支持结构化日志输出
+</span><span style="color:#75715e"></span>
+	<span style="color:#75715e">//一般场景下使用性能不错并且易用性也不错的 SugaredLogger 对象，同时支持结构化和 printf 风格的日志输出
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">sugarLogger</span> = <span style="color:#a6e22e">logger</span>.<span style="color:#a6e22e">Sugar</span>()
+	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">sugarLogger</span>.<span style="color:#a6e22e">Sync</span>()
+
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">100000</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+			<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+			<span style="color:#a6e22e">simpleHttpGet</span>(<span style="color:#e6db74">&#34;www.aaa.com&#34;</span>, <span style="color:#a6e22e">sugarLogger</span>)
+			<span style="color:#a6e22e">simpleHttpGet</span>(<span style="color:#e6db74">&#34;http://www.baidu.com&#34;</span>, <span style="color:#a6e22e">sugarLogger</span>)
+		}
+	}()
+
+	<span style="color:#75715e">/* 启用动态修改日志级别的 HTTP 接口
+</span><span style="color:#75715e">	 * 使用方法：
+</span><span style="color:#75715e">	 * curl http://localhost:8080/log/level  #获取当前日志级别
+</span><span style="color:#75715e">	 * curl -XPUT --data &#39;{&#34;level&#34;:&#34;debug&#34;}&#39; http://localhost:8080/log/level  #修改日志级别为 debug
+</span><span style="color:#75715e">	 * 支持的日志级别: debug, info, warn, error, fatal, panic
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">HandleFunc</span>(<span style="color:#e6db74">&#34;/log/level&#34;</span>, <span style="color:#a6e22e">atomLevel</span>.<span style="color:#a6e22e">ServeHTTP</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ListenAndServe</span>(<span style="color:#e6db74">&#34;:8080&#34;</span>, <span style="color:#66d9ef">nil</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		panic(<span style="color:#a6e22e">err</span>)
+	}
+
+}
+</code></pre></div><h2 id="heading-1">参考资料</h2>
+<ol>
+<li><a href="https://godoc.org/go.uber.org/zap#AtomicLevel">官方库 api 说明</a></li>
+<li><a href="https://www.liwenzhou.com/posts/Go/zap/">在Go语言项目中使用Zap日志库</a></li>
+<li><a href="http://vearne.cc/archives/649">玩转高性能日志库ZAP (1)</a></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Jerry Peng </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://pj-x86.github.io/2020/%E5%9F%BA%E4%BA%8Ezap%E5%92%8Clumberjack%E5%AE%9E%E7%8E%B0%E6%BB%9A%E5%8A%A8%E6%97%A5%E5%BF%97/>https://pj-x86.github.io/2020/%E5%9F%BA%E4%BA%8Ezap%E5%92%8Clumberjack%E5%AE%9E%E7%8E%B0%E6%BB%9A%E5%8A%A8%E6%97%A5%E5%BF%97/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://pj-x86.github.io/tags/golang/">
+                    #golang</a></span>
+            
+            <span class="tag"><a href="https://pj-x86.github.io/tags/logging/">
+                    #logging</a></span>
+            
+            <span class="tag"><a href="https://pj-x86.github.io/tags/zap/">
+                    #zap</a></span>
+            
+            <span class="tag"><a href="https://pj-x86.github.io/tags/lumberjack/">
+                    #lumberjack</a></span>
+            
+            <span class="tag"><a href="https://pj-x86.github.io/tags//">
+                    #</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://pj-x86.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://pj-x86.github.io/2019/%E6%94%B9%E9%80%A0go-kit%E5%AE%98%E6%96%B9%E7%A4%BA%E4%BE%8B%E5%AF%B9%E6%8E%A5eureka/" class="prev" rel="prev" title="改造Go Kit官方示例对接eureka"><i class="iconfont icon-left"></i>&nbsp;改造Go Kit官方示例对接eureka</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://pj-x86.github.io">Jerry Peng</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

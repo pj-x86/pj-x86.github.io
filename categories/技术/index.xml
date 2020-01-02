@@ -6,10 +6,20 @@
     <description>Recent content in 技术 on pj-x86&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 29 Dec 2019 14:48:09 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jan 2020 23:17:27 +0800</lastBuildDate>
     
 	<atom:link href="https://pj-x86.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>基于zap和lumberjack实现滚动日志</title>
+      <link>https://pj-x86.github.io/2020/%E5%9F%BA%E4%BA%8Ezap%E5%92%8Clumberjack%E5%AE%9E%E7%8E%B0%E6%BB%9A%E5%8A%A8%E6%97%A5%E5%BF%97/</link>
+      <pubDate>Thu, 02 Jan 2020 23:17:27 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/2020/%E5%9F%BA%E4%BA%8Ezap%E5%92%8Clumberjack%E5%AE%9E%E7%8E%B0%E6%BB%9A%E5%8A%A8%E6%97%A5%E5%BF%97/</guid>
+      <description>前言 本文学习了如何使用 uber 开源的高性能日志库 zap ，以下为完整程序，稍做完善，可用于生产环境。
+// 作者: pj-x86 // 日期: 2020-01-02 // 功能: 本程序基于 zap 和 lumberjack 实现以下日志基本功能： // 1. 日志输出到文件 // 2. 滚动日志输出，自动根据文件大小、日期进行文件切割、归档等 // 3. 支持多种日志级别，如 debug/info/error 等 // 4. 支持结构化日志输出，如 JSON 日志格式 // 5. 支持打印文件名、行号等信息 // 6. 支持不同环境采用不同的日志输出格式  package main import ( &amp;#34;net/http&amp;#34; &amp;#34;time&amp;#34; &amp;#34;go.uber.org/zap&amp;#34; &amp;#34;go.uber.org/zap/zapcore&amp;#34; &amp;#34;gopkg.in/natefinch/lumberjack.v2&amp;#34; ) func getEncoder(env string) zapcore.Encoder { encoderConfig := zap.NewProductionEncoderConfig() encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder //采用 ISO8601 时间格式 	encoderConfig.EncodeLevel = zapcore.CapitalLevelEncoder //日志级别名称全大写 	if env == &amp;#34;production&amp;#34; || env == &amp;#34;prod&amp;#34; { //生产环境使用对日志监控系统友好的 json 格式输出 	return zapcore.</description>
+    </item>
     
     <item>
       <title>改造Go Kit官方示例对接eureka</title>
