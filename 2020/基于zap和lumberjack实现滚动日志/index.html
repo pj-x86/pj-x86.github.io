@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "基于zap和lumberjack实现滚动日志",
     "headline" : "基于zap和lumberjack实现滚动日志",
-    "description" : "前言 本文学习了如何使用 uber 开源的高性能日志库 zap ，以下为完整程序，稍做完善，可用于生产环境。\n\/\/ 作者: pj-x86 \/\/ 日期: 2020-01-02 \/\/ 功能: 本程序基于 zap 和 lumberjack 实现以下日志基本功能： \/\/ 1. 日志输出到文件 \/\/ 2. 滚动日志输出，自动根据文件大小、日期进行文件切割、归档等 \/\/ 3. 支持多种日志级别，如 debug\/info\/error 等 \/\/ 4. 支持结构化日志输出，如 JSON 日志格式 \/\/ 5. 支持打印文件名、行号等信息 \/\/ 6. 支持不同环境采用不同的日志输出格式  package main import ( \x26#34;net\/http\x26#34; \x26#34;time\x26#34; \x26#34;go.uber.org\/zap\x26#34; \x26#34;go.uber.org\/zap\/zapcore\x26#34; \x26#34;gopkg.in\/natefinch\/lumberjack.v2\x26#34; ) func getEncoder(env string) zapcore.Encoder { encoderConfig := zap.NewProductionEncoderConfig() encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder \/\/采用 ISO8601 时间格式 \tencoderConfig.EncodeLevel = zapcore.CapitalLevelEncoder \/\/日志级别名称全大写 \tif env == \x26#34;production\x26#34; || env == \x26#34;prod\x26#34; { \/\/生产环境使用对日志监控系统友好的 json 格式输出 \treturn zapcore.",
+    "description" : "前言 本文学习了如何使用 uber 开源的高性能日志库 zap ，以下为完整程序，稍做完善，可用于生产环境。 \/\/ 作者: pj-x86 \/\/ 日期: 2020-01-02 \/\/ 功能: 本程序基于 zap 和 lumberjack 实现以下",
     "inLanguage" : "zh-cn",
     "author" : "Jerry Peng",
     "creator" : "Jerry Peng",
@@ -57,11 +57,14 @@
     "datePublished": "2020-01-02 23:17:27 \x2b0800 CST",
     "dateModified" : "2020-01-02 23:17:27 \x2b0800 CST",
     "url" : "https:\/\/pj-x86.github.io\/2020\/%E5%9F%BA%E4%BA%8Ezap%E5%92%8Clumberjack%E5%AE%9E%E7%8E%B0%E6%BB%9A%E5%8A%A8%E6%97%A5%E5%BF%97\/",
-    "wordCount" : "325",
+    "wordCount" : "785",
     "keywords" : [ "golang","logging","zap","lumberjack","", "pj-x86\x27s blog"]
 }
 </script>
 
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </head>
 
   
@@ -128,6 +131,7 @@
                         <a href="https://pj-x86.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
                         
                 </span>
+                <h5 id="wc">800 Words | Read in About 2 Min | Total Read <span id="busuanzi_value_page_pv"></span> Times </h5>
         </div>
     </header>
     <div class="post-content">
@@ -339,7 +343,9 @@
          
 
          
-		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv"> | 本站访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+        <span id="busuanzi_container_site_uv"> | 您是本站第 <span id="busuanzi_value_site_uv"></span> 位访客</span>
     </div>
 </footer>
 

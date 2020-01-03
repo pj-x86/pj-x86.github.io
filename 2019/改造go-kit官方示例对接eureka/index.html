@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "改造Go Kit官方示例对接eureka",
     "headline" : "改造Go Kit官方示例对接eureka",
-    "description" : "前言 近期学习 go-kit 的官方示例时，发现并未有对接 eureka 的参考代码，而我司目前的微服务架构是基于 spring cloud ，服务注册中心用的是 eureka ，因此，便试着改造一下官方的例子，也顺便验证一下 go-kit 框架的服务注册与发现功能。以下为基本操作过程。\n操作过程  启动 eureka server ，单节点  为了简单，本人使用了 docker 部署方式，命令如下：\ndocker run -it --rm -p 8761:8761 --name eureka springcloud\/eureka 启动成功后，通过浏览器访问 http:\/\/127.0.0.1:8761 可以打开 eureka 控制台主页。\n修改官方示例代码  修改代码上传于此位置，主要修改说明：\n服务提供者: stringsvc3 和 addsvc 增加向 eureka server 进行服务注册。 服务消费者: apigateway 增加从 eureka server 获取 stringsvc 和 addsvc 的实例列表。\n启动服务提供者  .\/addsvc -registry.type eureka -eureka.addr 127.0.0.1:8761 .\/stringsvc3 -registry.type eureka -eureka.addr 127.0.0.1:8761 启动成功后，会周期打印出与 eureka 的心跳日志，类似如下。",
+    "description" : "前言 近期学习 go-kit 的官方示例时，发现并未有对接 eureka 的参考代码，而我司目前的微服务架构是基于 spring cloud ，服务注册中心用的是 eureka ，因此，便试着改造一下官方的例",
     "inLanguage" : "zh-cn",
     "author" : "Jerry Peng",
     "creator" : "Jerry Peng",
@@ -57,11 +57,14 @@
     "datePublished": "2019-12-29 14:48:09 \x2b0800 CST",
     "dateModified" : "2019-12-29 14:48:09 \x2b0800 CST",
     "url" : "https:\/\/pj-x86.github.io\/2019\/%E6%94%B9%E9%80%A0go-kit%E5%AE%98%E6%96%B9%E7%A4%BA%E4%BE%8B%E5%AF%B9%E6%8E%A5eureka\/",
-    "wordCount" : "229",
+    "wordCount" : "654",
     "keywords" : [ "go-kit","golang","eureka","微服务","服务注册与发现", "pj-x86\x27s blog"]
 }
 </script>
 
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </head>
 
   
@@ -128,6 +131,7 @@
                         <a href="https://pj-x86.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
                         
                 </span>
+                <h5 id="wc">700 Words | Read in About 2 Min | Total Read <span id="busuanzi_value_page_pv"></span> Times </h5>
         </div>
     </header>
     <div class="post-content">
@@ -284,7 +288,9 @@ ts=2019-12-29T02:12:44.307608Z caller=instancer.go:58 app=addsvc instances=1
          
 
          
-		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv"> | 本站访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+        <span id="busuanzi_container_site_uv"> | 您是本站第 <span id="busuanzi_value_site_uv"></span> 位访客</span>
     </div>
 </footer>
 
