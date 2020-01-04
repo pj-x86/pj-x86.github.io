@@ -57,7 +57,7 @@
     "datePublished": "2020-01-02 23:17:27 \x2b0800 CST",
     "dateModified" : "2020-01-02 23:17:27 \x2b0800 CST",
     "url" : "https:\/\/pj-x86.github.io\/2020\/%E5%9F%BA%E4%BA%8Ezap%E5%92%8Clumberjack%E5%AE%9E%E7%8E%B0%E6%BB%9A%E5%8A%A8%E6%97%A5%E5%BF%97\/",
-    "wordCount" : "785",
+    "wordCount" : "940",
     "keywords" : [ "golang","logging","zap","lumberjack","", "pj-x86\x27s blog"]
 }
 </script>
@@ -131,7 +131,7 @@
                         <a href="https://pj-x86.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
                         
                 </span>
-                <h5 id="wc">800 Words | Read in About 2 Min | Total Read <span id="busuanzi_value_page_pv"></span> Times </h5>
+                <h5 id="wc">1000 Words | Read in About 2 Min | Total Read <span id="busuanzi_value_page_pv"></span> Times </h5>
         </div>
     </header>
     <div class="post-content">
@@ -155,17 +155,19 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 作者: pj-x86
 </span><span style="color:#75715e"></span><span style="color:#75715e">// 日期: 2020-01-02
 </span><span style="color:#75715e"></span><span style="color:#75715e">// 功能: 本程序基于 zap 和 lumberjack 实现以下日志基本功能：
-</span><span style="color:#75715e"></span><span style="color:#75715e">//   1. 日志输出到文件
-</span><span style="color:#75715e"></span><span style="color:#75715e">//   2. 滚动日志输出，自动根据文件大小、日期进行文件切割、归档等
+</span><span style="color:#75715e"></span><span style="color:#75715e">//   1. 支持日志输出到文件
+</span><span style="color:#75715e"></span><span style="color:#75715e">//   2. 支持滚动日志输出，自动根据文件大小、日期进行文件切割、归档等
 </span><span style="color:#75715e"></span><span style="color:#75715e">//   3. 支持多种日志级别，如 debug/info/error 等
 </span><span style="color:#75715e"></span><span style="color:#75715e">//   4. 支持结构化日志输出，如 JSON 日志格式
 </span><span style="color:#75715e"></span><span style="color:#75715e">//   5. 支持打印文件名、行号等信息
 </span><span style="color:#75715e"></span><span style="color:#75715e">//   6. 支持不同环境采用不同的日志输出格式
+</span><span style="color:#75715e"></span><span style="color:#75715e">//   7. 支持开发环境同时输出日志到文件和控制台，方便调试；其他环境，只输出到文件
 </span><span style="color:#75715e"></span>
 <span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
 <span style="color:#f92672">import</span> (
 	<span style="color:#e6db74">&#34;net/http&#34;</span>
+	<span style="color:#e6db74">&#34;os&#34;</span>
 	<span style="color:#e6db74">&#34;time&#34;</span>
 
 	<span style="color:#e6db74">&#34;go.uber.org/zap&#34;</span>
@@ -202,10 +204,20 @@
 }
 
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">initLogger</span>(<span style="color:#a6e22e">env</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">fileName</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">atomLevel</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">AtomicLevel</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">Logger</span> {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">allCore</span> []<span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">Core</span>
+
 	<span style="color:#a6e22e">encoder</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">getEncoder</span>(<span style="color:#a6e22e">env</span>)
-	<span style="color:#a6e22e">writeSyncer</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">getLogWriter</span>(<span style="color:#a6e22e">fileName</span>)
-	<span style="color:#a6e22e">core</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">NewCore</span>(<span style="color:#a6e22e">encoder</span>, <span style="color:#a6e22e">writeSyncer</span>, <span style="color:#a6e22e">atomLevel</span>) <span style="color:#75715e">//第三个参数确定日志输出级别
+	<span style="color:#a6e22e">fileWriteSyncer</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">getLogWriter</span>(<span style="color:#a6e22e">fileName</span>)     <span style="color:#75715e">//输出到文件
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">consoleWriteSyncer</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">Lock</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stdout</span>) <span style="color:#75715e">//输出到控制台
 </span><span style="color:#75715e"></span>
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;dev&#34;</span> { <span style="color:#75715e">//开发环境同时输出日志到控制台和文件，便于快速调试
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">allCore</span> = append(<span style="color:#a6e22e">allCore</span>, <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">NewCore</span>(<span style="color:#a6e22e">encoder</span>, <span style="color:#a6e22e">consoleWriteSyncer</span>, <span style="color:#a6e22e">atomLevel</span>))
+	}
+	<span style="color:#a6e22e">allCore</span> = append(<span style="color:#a6e22e">allCore</span>, <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">NewCore</span>(<span style="color:#a6e22e">encoder</span>, <span style="color:#a6e22e">fileWriteSyncer</span>, <span style="color:#a6e22e">atomLevel</span>))
+
+	<span style="color:#75715e">//core := zapcore.NewCore(encoder, fileWriteSyncer, atomLevel) //第三个参数确定日志输出级别
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">core</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">NewTee</span>(<span style="color:#a6e22e">allCore</span><span style="color:#f92672">...</span>)
+
 	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">core</span>, <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">AddCaller</span>()) <span style="color:#75715e">//AddCaller 打印文件名、行号
 </span><span style="color:#75715e"></span>}
 
@@ -225,8 +237,8 @@
 	<span style="color:#75715e">//日志对象全部定义在 main 函数内部，不作为全局变量，采用显示依赖注入，不使用隐式依赖，类似 go-kit 的设计理念
 </span><span style="color:#75715e"></span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">logger</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">Logger</span>
 	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sugarLogger</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">SugaredLogger</span>
-	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">atomLevel</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">AtomicLevel</span>
-	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">env</span> <span style="color:#66d9ef">string</span> = <span style="color:#e6db74">&#34;dev&#34;</span> <span style="color:#75715e">//dev-开发, test-测试, prod-生产
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">atomLevel</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">AtomicLevel</span> <span style="color:#75715e">//日志输出级别，可动态修改
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">env</span> <span style="color:#66d9ef">string</span> = <span style="color:#e6db74">&#34;test&#34;</span>       <span style="color:#75715e">//dev-开发, test-测试, prod-生产
 </span><span style="color:#75715e"></span>
 	<span style="color:#a6e22e">atomLevel</span> = <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">NewAtomicLevelAt</span>(<span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">InfoLevel</span>)   <span style="color:#75715e">//默认 Info 日志级别
 </span><span style="color:#75715e"></span>	<span style="color:#a6e22e">logger</span> = <span style="color:#a6e22e">initLogger</span>(<span style="color:#a6e22e">env</span>, <span style="color:#e6db74">&#34;./test.log&#34;</span>, <span style="color:#a6e22e">atomLevel</span>) <span style="color:#75715e">//默认创建性能最佳的 Logger 对象，对性能有要求的场景下可以使用它，仅支持结构化日志输出
@@ -260,6 +272,7 @@
 <li><a href="https://godoc.org/go.uber.org/zap#AtomicLevel">官方库 api 说明</a></li>
 <li><a href="https://www.liwenzhou.com/posts/Go/zap/">在Go语言项目中使用Zap日志库</a></li>
 <li><a href="http://vearne.cc/archives/649">玩转高性能日志库ZAP (1)</a></li>
+<li><a href="https://blog.csdn.net/hexiaoyun128/article/details/85159369">Uber日志zap同时输出到Kafka，Console，文件</a></li>
 </ol>
 
     </div>
