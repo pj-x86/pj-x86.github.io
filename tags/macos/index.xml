@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>macos on pj-x86&#39;s blog</title>
+    <link>https://pj-x86.github.io/tags/macos/</link>
+    <description>Recent content in macos on pj-x86&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 10 Jan 2020 21:07:05 +0800</lastBuildDate>
+    
+	<atom:link href="https://pj-x86.github.io/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用go-oci8连接oracle</title>
+      <link>https://pj-x86.github.io/2020/%E4%BD%BF%E7%94%A8go-oci8%E8%BF%9E%E6%8E%A5oracle/</link>
+      <pubDate>Fri, 10 Jan 2020 21:07:05 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/2020/%E4%BD%BF%E7%94%A8go-oci8%E8%BF%9E%E6%8E%A5oracle/</guid>
+      <description>安装 安装 oracle 客户端 MacOS 由于我的 Mac 没有 oracle 客户端完整版，所以选择安装 oracle 即时客户端，更轻量级。下载地址:Instant Client Downloads for macOS (Intel x86) - Version 19.3.0.0.0 (64-bit</description>
+    </item>
+    
+  </channel>
+</rss>
