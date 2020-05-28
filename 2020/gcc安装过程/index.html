@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Jerry Peng">
+  
+  
+  
+  <link rel="prev" href="https://pj-x86.github.io/2020/%E4%BD%BF%E7%94%A8go-oci8%E8%BF%9E%E6%8E%A5oracle/" />
+  
+  <link rel="canonical" href="https://pj-x86.github.io/2020/gcc%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           gcc源码安装过程 | pj-x86&#39;s blog
+       
+  </title>
+  <meta name="title" content="gcc源码安装过程 | pj-x86&#39;s blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/pj-x86.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "gcc源码安装过程",
+    "headline" : "gcc源码安装过程",
+    "description" : "redhat7.7-x86_64 源码安装 gcc-5.5.0 安装准备 从gcc官方ftp或国内各大高校镜像ftp服务器分别下载 gcc依赖库: gmp-6.2.0.tar.bz2, mpfr-4.0.0.tar.bz2, mpc-1.1.0.tar.gz gcc源码安装包: gcc-5.5.0.tar.gz 安装 gmp-6.2.0.tar.bz2 .\/configure --prefix=\/usr\/local\/gmp-6.2.0 make \x26amp;\x26amp; make install 安装 mpfr-4.0.0.tar.bz2",
+    "inLanguage" : "zh-cn",
+    "author" : "Jerry Peng",
+    "creator" : "Jerry Peng",
+    "publisher": "Jerry Peng",
+    "accountablePerson" : "Jerry Peng",
+    "copyrightHolder" : "Jerry Peng",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-05-28 22:27:17 \x2b0800 CST",
+    "dateModified" : "2020-05-28 22:27:17 \x2b0800 CST",
+    "url" : "https:\/\/pj-x86.github.io\/2020\/gcc%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B\/",
+    "wordCount" : "208",
+    "keywords" : [ "gcc","redhat","linux", "pj-x86\x27s blog"]
+}
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://pj-x86.github.io">pj-x86&#39;s blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">博客</a>
+                
+                <a class="menu-item" href="/categories/" title="">分类</a>
+                
+                <a class="menu-item" href="/tags/" title="">标签</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://pj-x86.github.io">pj-x86&#39;s blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">博客</a>
+                
+                <a class="menu-item" href="/categories/" title="">分类</a>
+                
+                <a class="menu-item" href="/tags/" title="">标签</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">gcc源码安装过程</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://pj-x86.github.io" rel="author">Jerry Peng</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-05-28 itemprop="datePublished">May 28, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://pj-x86.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        
+                </span>
+                <h5 id="wc">300 Words | Read in About 1 Min | Total Read <span id="busuanzi_value_page_pv"></span> Times </h5>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="redhat77-x86-64--gcc-550">redhat7.7-x86_64 源码安装 gcc-5.5.0</h2>
+<h3 id="heading">安装准备</h3>
+<p>从gcc官方ftp或国内各大高校镜像ftp服务器分别下载</p>
+<p>gcc依赖库: gmp-6.2.0.tar.bz2, mpfr-4.0.0.tar.bz2, mpc-1.1.0.tar.gz</p>
+<p>gcc源码安装包: gcc-5.5.0.tar.gz</p>
+<h3 id="-gmp-620tarbz2">安装 gmp-6.2.0.tar.bz2</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./configure --prefix<span style="color:#f92672">=</span>/usr/local/gmp-6.2.0
+make <span style="color:#f92672">&amp;&amp;</span> make install
+</code></pre></div><h3 id="-mpfr-400tarbz2">安装 mpfr-4.0.0.tar.bz2</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./configure --prefix<span style="color:#f92672">=</span>/usr/local/mpfr-4.0.0 --with-gmp<span style="color:#f92672">=</span>/usr/local/gmp-6.2.0
+make <span style="color:#f92672">&amp;&amp;</span> make install
+</code></pre></div><h3 id="-mpc-110targz">安装 mpc-1.1.0.tar.gz</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./configure --prefix<span style="color:#f92672">=</span>/usr/local/mpc-1.1.0 --with-mpfr<span style="color:#f92672">=</span>/usr/local/mpfr-4.0.0 --with-gmp<span style="color:#f92672">=</span>/usr/local/gmp-6.2.0
+make <span style="color:#f92672">&amp;&amp;</span> make install
+</code></pre></div><h3 id="-gcc-550">安装 gcc-5.5.0</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd gcc-5.5.0/
+mkdir build <span style="color:#f92672">&amp;&amp;</span> cd build
+
+../configure --prefix<span style="color:#f92672">=</span>/usr/local/gcc-5.5.0 --with-gmp<span style="color:#f92672">=</span>/usr/local/gmp-6.2.0 --with-mpc<span style="color:#f92672">=</span>/usr/local/mpc-1.1.0 --with-mpfr<span style="color:#f92672">=</span>/usr/local/mpfr-4.0.0 --enable-checking<span style="color:#f92672">=</span>release --enable-languages<span style="color:#f92672">=</span>c,c++ --disable-multilib
+
+export LD_LIBRARY_PATH<span style="color:#f92672">=</span>$LD_LIBRARY_PATH:/usr/local/mpc-1.1.0/lib:/usr/local/gmp-6.2.0/lib:/usr/local/mpfr-4.0.0/lib
+
+make -j <span style="color:#f92672">&amp;&amp;</span> make install
+</code></pre></div><h3 id="-gcc">配置 gcc</h3>
+<p>为了同时保持系统自带 gcc 和新版本 gcc 可同时使用，可做如下设置</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi ~/.bash_profile<span style="color:#f92672">(</span>可不设置<span style="color:#f92672">)</span>
+export GCC_HOME<span style="color:#f92672">=</span>/usr/local/gcc-5.5.0
+export PATH<span style="color:#f92672">=</span>$PATH:$GCC_HOME/bin
+export LD_LIBRARY_PATH<span style="color:#f92672">=</span>$LD_LIBRARY_PATH:$GCC_HOME/lib
+
+创建软链接到 /usr/bin 下
+cd /usr/bin
+ln -s /usr/local/gcc-5.5.0/bin/gcc gcc550
+ln -s /usr/local/gcc-5.5.0/bin/g++ g++550
+</code></pre></div><p>验证:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gcc --version
+gcc550 --version
+</code></pre></div><p>显示不同版本号即正常。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Jerry Peng </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://pj-x86.github.io/2020/gcc%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/>https://pj-x86.github.io/2020/gcc%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://pj-x86.github.io/tags/gcc/">
+                    #gcc</a></span>
+            
+            <span class="tag"><a href="https://pj-x86.github.io/tags/redhat/">
+                    #redhat</a></span>
+            
+            <span class="tag"><a href="https://pj-x86.github.io/tags/linux/">
+                    #linux</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://pj-x86.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://pj-x86.github.io/2020/%E4%BD%BF%E7%94%A8go-oci8%E8%BF%9E%E6%8E%A5oracle/" class="prev" rel="prev" title="使用go-oci8连接oracle"><i class="iconfont icon-left"></i>&nbsp;使用go-oci8连接oracle</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://pj-x86.github.io">Jerry Peng</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv"> | 本站访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+        <span id="busuanzi_container_site_uv"> | 您是本站第 <span id="busuanzi_value_site_uv"></span> 位访客</span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
