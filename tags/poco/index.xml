@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>redhat on pj-x86&#39;s blog</title>
-    <link>https://pj-x86.github.io/tags/redhat/</link>
-    <description>Recent content in redhat on pj-x86&#39;s blog</description>
+    <title>poco on pj-x86&#39;s blog</title>
+    <link>https://pj-x86.github.io/tags/poco/</link>
+    <description>Recent content in poco on pj-x86&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 28 May 2020 23:04:19 +0800</lastBuildDate>
     
-	<atom:link href="https://pj-x86.github.io/tags/redhat/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://pj-x86.github.io/tags/poco/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://pj-x86.github.io/2020/poco%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/</guid>
       <description>redhat7.7-x86_64 源码安装 poco-1.9.4 依赖 c++11，不依赖 c++14(poco-1.10.0 版本开始强制依赖 c++14) mkdir cmake-build cd cmake-build cmake -DCMAKE_INSTALL_PREFIX=/usr/local/poco-1.9.4 --build . --target install .. make -j make install 配置环境变量 vi ·/.bash_profile export POCO_HOME=/usr/local/poco-1.9.4 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$POCO_HOME/lib</description>
-    </item>
-    
-    <item>
-      <title>gcc安装过程</title>
-      <link>https://pj-x86.github.io/2020/gcc%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/</link>
-      <pubDate>Thu, 28 May 2020 22:27:17 +0800</pubDate>
-      
-      <guid>https://pj-x86.github.io/2020/gcc%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/</guid>
-      <description>redhat7.7-x86_64 源码安装 gcc-5.5.0 安装准备 从gcc官方ftp或国内各大高校镜像ftp服务器分别下载 gcc依赖库: gmp-6.2.0.tar.bz2, mpfr-4.0.0.tar.bz2, mpc-1.1.0.tar.gz gcc源码安装包: gcc-5.5.0.tar.gz 安装 gmp-6.2.0.tar.bz2 ./configure --prefix=/usr/local/gmp-6.2.0 make &amp;amp;&amp;amp; make install 安装 mpfr-4.0.0.tar.bz2</description>
     </item>
     
   </channel>

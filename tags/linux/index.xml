@@ -6,10 +6,19 @@
     <description>Recent content in linux on pj-x86&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 28 May 2020 22:27:17 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2020 23:04:19 +0800</lastBuildDate>
     
 	<atom:link href="https://pj-x86.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>poco源码安装</title>
+      <link>https://pj-x86.github.io/2020/poco%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Thu, 28 May 2020 23:04:19 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/2020/poco%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/</guid>
+      <description>redhat7.7-x86_64 源码安装 poco-1.9.4 依赖 c++11，不依赖 c++14(poco-1.10.0 版本开始强制依赖 c++14) mkdir cmake-build cd cmake-build cmake -DCMAKE_INSTALL_PREFIX=/usr/local/poco-1.9.4 --build . --target install .. make -j make install 配置环境变量 vi ·/.bash_profile export POCO_HOME=/usr/local/poco-1.9.4 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$POCO_HOME/lib</description>
+    </item>
     
     <item>
       <title>gcc安装过程</title>

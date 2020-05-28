@@ -9,9 +9,9 @@
   
   
   
-  <link rel="prev" href="https://pj-x86.github.io/2020/%E4%BD%BF%E7%94%A8go-oci8%E8%BF%9E%E6%8E%A5oracle/" />
-  <link rel="next" href="https://pj-x86.github.io/2020/poco%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/" />
-  <link rel="canonical" href="https://pj-x86.github.io/2020/gcc%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/" />
+  <link rel="prev" href="https://pj-x86.github.io/2020/gcc%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/" />
+  
+  <link rel="canonical" href="https://pj-x86.github.io/2020/poco%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -22,10 +22,10 @@
   <title>
        
        
-           gcc安装过程 | pj-x86&#39;s blog
+           poco源码安装 | pj-x86&#39;s blog
        
   </title>
-  <meta name="title" content="gcc安装过程 | pj-x86&#39;s blog">
+  <meta name="title" content="poco源码安装 | pj-x86&#39;s blog">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -44,9 +44,9 @@
          "@id": "https:\/\/pj-x86.github.io"
     },
     "articleSection" : "posts",
-    "name" : "gcc安装过程",
-    "headline" : "gcc安装过程",
-    "description" : "redhat7.7-x86_64 源码安装 gcc-5.5.0 安装准备 从gcc官方ftp或国内各大高校镜像ftp服务器分别下载 gcc依赖库: gmp-6.2.0.tar.bz2, mpfr-4.0.0.tar.bz2, mpc-1.1.0.tar.gz gcc源码安装包: gcc-5.5.0.tar.gz 安装 gmp-6.2.0.tar.bz2 .\/configure --prefix=\/usr\/local\/gmp-6.2.0 make \x26amp;\x26amp; make install 安装 mpfr-4.0.0.tar.bz2",
+    "name" : "poco源码安装",
+    "headline" : "poco源码安装",
+    "description" : "redhat7.7-x86_64 源码安装 poco-1.9.4 依赖 c\x2b\x2b11，不依赖 c\x2b\x2b14(poco-1.10.0 版本开始强制依赖 c\x2b\x2b14) mkdir cmake-build cd cmake-build cmake -DCMAKE_INSTALL_PREFIX=\/usr\/local\/poco-1.9.4 --build . --target install .. make -j make install 配置环境变量 vi ·\/.bash_profile export POCO_HOME=\/usr\/local\/poco-1.9.4 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$POCO_HOME\/lib",
     "inLanguage" : "zh-cn",
     "author" : "Jerry Peng",
     "creator" : "Jerry Peng",
@@ -54,11 +54,11 @@
     "accountablePerson" : "Jerry Peng",
     "copyrightHolder" : "Jerry Peng",
     "copyrightYear" : "2020",
-    "datePublished": "2020-05-28 22:27:17 \x2b0800 CST",
-    "dateModified" : "2020-05-28 22:27:17 \x2b0800 CST",
-    "url" : "https:\/\/pj-x86.github.io\/2020\/gcc%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B\/",
-    "wordCount" : "208",
-    "keywords" : [ "gcc","redhat","linux", "pj-x86\x27s blog"]
+    "datePublished": "2020-05-28 23:04:19 \x2b0800 CST",
+    "dateModified" : "2020-05-28 23:04:19 \x2b0800 CST",
+    "url" : "https:\/\/pj-x86.github.io\/2020\/poco%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85\/",
+    "wordCount" : "68",
+    "keywords" : [ "c\x2b\x2b","redhat","linux","c\x2b\x2b11","poco", "pj-x86\x27s blog"]
 }
 </script>
 
@@ -119,7 +119,7 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">gcc安装过程</h1>
+        <h1 class="post-title" itemprop="name headline">poco源码安装</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://pj-x86.github.io" rel="author">Jerry Peng</a> with ♥ 
                 <span class="post-time">
@@ -131,7 +131,7 @@
                         <a href="https://pj-x86.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
                         
                 </span>
-                <h5 id="wc">300 Words | Read in About 1 Min | Total Read <span id="busuanzi_value_page_pv"></span> Times </h5>
+                <h5 id="wc">100 Words | Read in About 1 Min | Total Read <span id="busuanzi_value_page_pv"></span> Times </h5>
         </div>
     </header>
     <div class="post-content">
@@ -150,45 +150,19 @@
           
           
 
-          <h2 id="redhat77-x86-64--gcc-550">redhat7.7-x86_64 源码安装 gcc-5.5.0</h2>
-<h3 id="heading">安装准备</h3>
-<p>从gcc官方ftp或国内各大高校镜像ftp服务器分别下载</p>
-<p>gcc依赖库: gmp-6.2.0.tar.bz2, mpfr-4.0.0.tar.bz2, mpc-1.1.0.tar.gz</p>
-<p>gcc源码安装包: gcc-5.5.0.tar.gz</p>
-<h3 id="-gmp-620tarbz2">安装 gmp-6.2.0.tar.bz2</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./configure --prefix<span style="color:#f92672">=</span>/usr/local/gmp-6.2.0
-make <span style="color:#f92672">&amp;&amp;</span> make install
-</code></pre></div><h3 id="-mpfr-400tarbz2">安装 mpfr-4.0.0.tar.bz2</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./configure --prefix<span style="color:#f92672">=</span>/usr/local/mpfr-4.0.0 --with-gmp<span style="color:#f92672">=</span>/usr/local/gmp-6.2.0
-make <span style="color:#f92672">&amp;&amp;</span> make install
-</code></pre></div><h3 id="-mpc-110targz">安装 mpc-1.1.0.tar.gz</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./configure --prefix<span style="color:#f92672">=</span>/usr/local/mpc-1.1.0 --with-mpfr<span style="color:#f92672">=</span>/usr/local/mpfr-4.0.0 --with-gmp<span style="color:#f92672">=</span>/usr/local/gmp-6.2.0
-make <span style="color:#f92672">&amp;&amp;</span> make install
-</code></pre></div><h3 id="-gcc-550">安装 gcc-5.5.0</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd gcc-5.5.0/
-mkdir build <span style="color:#f92672">&amp;&amp;</span> cd build
+          <h2 id="redhat77-x86-64--poco-194">redhat7.7-x86_64 源码安装 poco-1.9.4</h2>
+<p>依赖 c++11，不依赖 c++14(poco-1.10.0 版本开始强制依赖 c++14)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir cmake-build
+cd cmake-build
+cmake -DCMAKE_INSTALL_PREFIX<span style="color:#f92672">=</span>/usr/local/poco-1.9.4 --build . --target install ..
+make -j
+make install
+</code></pre></div><p>配置环境变量</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi ·/.bash_profile
 
-../configure --prefix<span style="color:#f92672">=</span>/usr/local/gcc-5.5.0 --with-gmp<span style="color:#f92672">=</span>/usr/local/gmp-6.2.0 --with-mpc<span style="color:#f92672">=</span>/usr/local/mpc-1.1.0 --with-mpfr<span style="color:#f92672">=</span>/usr/local/mpfr-4.0.0 --enable-checking<span style="color:#f92672">=</span>release --enable-languages<span style="color:#f92672">=</span>c,c++ --disable-multilib
-
-export LD_LIBRARY_PATH<span style="color:#f92672">=</span>$LD_LIBRARY_PATH:/usr/local/mpc-1.1.0/lib:/usr/local/gmp-6.2.0/lib:/usr/local/mpfr-4.0.0/lib
-
-make -j <span style="color:#f92672">&amp;&amp;</span> make install
-</code></pre></div><h3 id="-gcc">配置 gcc</h3>
-<p>为了同时保持系统自带 gcc 和新版本 gcc 可同时使用，可做如下设置</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi ~/.bash_profile<span style="color:#f92672">(</span>可不设置<span style="color:#f92672">)</span>
-export GCC_HOME<span style="color:#f92672">=</span>/usr/local/gcc-5.5.0
-export PATH<span style="color:#f92672">=</span>$PATH:$GCC_HOME/bin
-export LD_LIBRARY_PATH<span style="color:#f92672">=</span>$LD_LIBRARY_PATH:$GCC_HOME/lib
-
-创建软链接到 /usr/bin 下
-cd /usr/bin
-ln -s /usr/local/gcc-5.5.0/bin/gcc gcc550
-ln -s /usr/local/gcc-5.5.0/bin/g++ g++550
-</code></pre></div><p>验证:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gcc --version
-gcc550 --version
-</code></pre></div><p>显示不同版本号即正常。</p>
-
+export POCO_HOME<span style="color:#f92672">=</span>/usr/local/poco-1.9.4
+export LD_LIBRARY_PATH<span style="color:#f92672">=</span>$LD_LIBRARY_PATH:$POCO_HOME/lib
+</code></pre></div>
     </div>
 
     <div class="post-copyright">
@@ -202,7 +176,7 @@ gcc550 --version
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://pj-x86.github.io/2020/gcc%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/>https://pj-x86.github.io/2020/gcc%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/</span>
+                    <a href=https://pj-x86.github.io/2020/poco%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/>https://pj-x86.github.io/2020/poco%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/</span>
             </p>
             
              
@@ -218,14 +192,20 @@ gcc550 --version
             <section>
             <i class="iconfont icon-tag"></i>Tag(s): 
             
-            <span class="tag"><a href="https://pj-x86.github.io/tags/gcc/">
-                    #gcc</a></span>
+            <span class="tag"><a href="https://pj-x86.github.io/tags/c&#43;&#43;/">
+                    #c&#43;&#43;</a></span>
             
             <span class="tag"><a href="https://pj-x86.github.io/tags/redhat/">
                     #redhat</a></span>
             
             <span class="tag"><a href="https://pj-x86.github.io/tags/linux/">
                     #linux</a></span>
+            
+            <span class="tag"><a href="https://pj-x86.github.io/tags/c&#43;&#43;11/">
+                    #c&#43;&#43;11</a></span>
+            
+            <span class="tag"><a href="https://pj-x86.github.io/tags/poco/">
+                    #poco</a></span>
             
             </section>
         
@@ -237,10 +217,8 @@ gcc550 --version
 
     <div class="post-nav">
         
-        <a href="https://pj-x86.github.io/2020/%E4%BD%BF%E7%94%A8go-oci8%E8%BF%9E%E6%8E%A5oracle/" class="prev" rel="prev" title="使用go-oci8连接oracle"><i class="iconfont icon-left"></i>&nbsp;使用go-oci8连接oracle</a>
+        <a href="https://pj-x86.github.io/2020/gcc%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/" class="prev" rel="prev" title="gcc安装过程"><i class="iconfont icon-left"></i>&nbsp;gcc安装过程</a>
          
-        
-        <a href="https://pj-x86.github.io/2020/poco%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/" class="next" rel="next" title="poco源码安装">poco源码安装&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

@@ -6,10 +6,55 @@
     <description>Recent content in Tags on pj-x86&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 28 May 2020 22:27:17 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2020 23:04:19 +0800</lastBuildDate>
     
 	<atom:link href="https://pj-x86.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>c&#43;&#43;</title>
+      <link>https://pj-x86.github.io/tags/c&#43;&#43;/</link>
+      <pubDate>Thu, 28 May 2020 23:04:19 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/tags/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>c&#43;&#43;11</title>
+      <link>https://pj-x86.github.io/tags/c&#43;&#43;11/</link>
+      <pubDate>Thu, 28 May 2020 23:04:19 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/tags/c&#43;&#43;11/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://pj-x86.github.io/tags/linux/</link>
+      <pubDate>Thu, 28 May 2020 23:04:19 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>poco</title>
+      <link>https://pj-x86.github.io/tags/poco/</link>
+      <pubDate>Thu, 28 May 2020 23:04:19 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/tags/poco/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redhat</title>
+      <link>https://pj-x86.github.io/tags/redhat/</link>
+      <pubDate>Thu, 28 May 2020 23:04:19 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/tags/redhat/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>gcc</title>
@@ -17,24 +62,6 @@
       <pubDate>Thu, 28 May 2020 22:27:17 +0800</pubDate>
       
       <guid>https://pj-x86.github.io/tags/gcc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>https://pj-x86.github.io/tags/linux/</link>
-      <pubDate>Thu, 28 May 2020 22:27:17 +0800</pubDate>
-      
-      <guid>https://pj-x86.github.io/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>redhat</title>
-      <link>https://pj-x86.github.io/tags/redhat/</link>
-      <pubDate>Thu, 28 May 2020 22:27:17 +0800</pubDate>
-      
-      <guid>https://pj-x86.github.io/tags/redhat/</guid>
       <description></description>
     </item>
     
