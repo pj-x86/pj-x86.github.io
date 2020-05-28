@@ -6,10 +6,37 @@
     <description>Recent content in Tags on pj-x86&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 10 Jan 2020 21:07:05 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2020 22:27:17 +0800</lastBuildDate>
     
 	<atom:link href="https://pj-x86.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>gcc</title>
+      <link>https://pj-x86.github.io/tags/gcc/</link>
+      <pubDate>Thu, 28 May 2020 22:27:17 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/tags/gcc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://pj-x86.github.io/tags/linux/</link>
+      <pubDate>Thu, 28 May 2020 22:27:17 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redhat</title>
+      <link>https://pj-x86.github.io/tags/redhat/</link>
+      <pubDate>Thu, 28 May 2020 22:27:17 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/tags/redhat/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>golang</title>
@@ -17,15 +44,6 @@
       <pubDate>Fri, 10 Jan 2020 21:07:05 +0800</pubDate>
       
       <guid>https://pj-x86.github.io/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>https://pj-x86.github.io/tags/linux/</link>
-      <pubDate>Fri, 10 Jan 2020 21:07:05 +0800</pubDate>
-      
-      <guid>https://pj-x86.github.io/tags/linux/</guid>
       <description></description>
     </item>
     

@@ -6,10 +6,19 @@
     <description>Recent content in Posts on pj-x86&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 10 Jan 2020 21:07:05 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2020 22:27:17 +0800</lastBuildDate>
     
 	<atom:link href="https://pj-x86.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>gcc源码安装过程</title>
+      <link>https://pj-x86.github.io/2020/gcc%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/</link>
+      <pubDate>Thu, 28 May 2020 22:27:17 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/2020/gcc%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/</guid>
+      <description>redhat7.7-x86_64 源码安装 gcc-5.5.0 安装准备 从gcc官方ftp或国内各大高校镜像ftp服务器分别下载 gcc依赖库: gmp-6.2.0.tar.bz2, mpfr-4.0.0.tar.bz2, mpc-1.1.0.tar.gz gcc源码安装包: gcc-5.5.0.tar.gz 安装 gmp-6.2.0.tar.bz2 ./configure --prefix=/usr/local/gmp-6.2.0 make &amp;amp;&amp;amp; make install 安装 mpfr-4.0.0.tar.bz2</description>
+    </item>
     
     <item>
       <title>使用go-oci8连接oracle</title>
