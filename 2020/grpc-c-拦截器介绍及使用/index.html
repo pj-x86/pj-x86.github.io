@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Jerry Peng">
+  
+  
+  
+  <link rel="prev" href="https://pj-x86.github.io/2020/poco%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/" />
+  
+  <link rel="canonical" href="https://pj-x86.github.io/2020/grpc-c-%E6%8B%A6%E6%88%AA%E5%99%A8%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           GRPC C&#43;&#43;拦截器介绍及使用 | pj-x86&#39;s blog
+       
+  </title>
+  <meta name="title" content="GRPC C&#43;&#43;拦截器介绍及使用 | pj-x86&#39;s blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/pj-x86.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "GRPC C\x2b\x2b拦截器介绍及使用",
+    "headline" : "GRPC C\x2b\x2b拦截器介绍及使用",
+    "description" : "基本介绍 gRPC-C\x2b\x2b目前提供了实验性的拦截器功能，暂时放在名字空间 grpc::experimental 下，意味着该功能还不稳定，以后可能会有变化。本文基于当前的 grpc-1.28 版本进行",
+    "inLanguage" : "zh-cn",
+    "author" : "Jerry Peng",
+    "creator" : "Jerry Peng",
+    "publisher": "Jerry Peng",
+    "accountablePerson" : "Jerry Peng",
+    "copyrightHolder" : "Jerry Peng",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-06-21 14:58:00 \x2b0800 CST",
+    "dateModified" : "2020-06-21 14:58:00 \x2b0800 CST",
+    "url" : "https:\/\/pj-x86.github.io\/2020\/grpc-c-%E6%8B%A6%E6%88%AA%E5%99%A8%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8\/",
+    "wordCount" : "1366",
+    "keywords" : [ "gRPC","C\x2b\x2b","Interceptor","拦截器","接口日志输出", "pj-x86\x27s blog"]
+}
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://pj-x86.github.io">pj-x86&#39;s blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">博客</a>
+                
+                <a class="menu-item" href="/categories/" title="">分类</a>
+                
+                <a class="menu-item" href="/tags/" title="">标签</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://pj-x86.github.io">pj-x86&#39;s blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">博客</a>
+                
+                <a class="menu-item" href="/categories/" title="">分类</a>
+                
+                <a class="menu-item" href="/tags/" title="">标签</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">GRPC C&#43;&#43;拦截器介绍及使用</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://pj-x86.github.io" rel="author">Jerry Peng</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-06-21 itemprop="datePublished">June 21, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://pj-x86.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        
+                </span>
+                <h5 id="wc">1400 Words | Read in About 3 Min | Total Read <span id="busuanzi_value_page_pv"></span> Times </h5>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="heading">基本介绍</h2>
+<p>gRPC-C++目前提供了实验性的拦截器功能，暂时放在名字空间 grpc::experimental 下，意味着该功能还不稳定，以后可能会有变化。本文基于当前的 grpc-1.28 版本进行介绍。</p>
+<p>拦截器分为客户端拦截器和服务端拦截器。其用途一般在于处理接口的通用功能，如统一的认证鉴权、接口调用日志输出等。本文主要以输出接口调用日志为例进行介绍。</p>
+<h2 id="-api">相关类和 API</h2>
+<p>无论是服务端还是客户端，都是基于相同的公共类实现拦截器功能，这几个类主要是 Interceptor,InterceptorBatchMethods,InterceptionHookPoints 。通常做法是自定义一个拦截器类，如 ClientLoggingInterceptor 继承 Interceptor 类，并实现其方法 Intercept()，在其中编写针对指定钩子位置的处理代码。然后，自定义拦截器工厂类，也是继承 ClientInterceptorFactoryInterface 或 ServerInterceptorFactoryInterface 类。最后，在客户端或服务端入口创建通信层代码中设置拦截器。</p>
+<ul>
+<li>头文件
+<ul>
+<li>grpcpp/support/client_interceptor.h: 客户端拦截器</li>
+<li>grpcpp/support/server_interceptor.h: 服务端拦截器</li>
+</ul>
+</li>
+<li>公共类
+<ul>
+<li>grpc::experimental::Interceptor
+<ul>
+<li>拦截器抽象虚基类，需创建子类继承它</li>
+<li>Intercept(): 实现此方法，其中可设置在指定钩子位置触发特定动作</li>
+</ul>
+</li>
+<li>grpc::experimental::InterceptionHookPoints
+<ul>
+<li>枚举类，表示拦截器可设置的拦截点(钩子位置)</li>
+<li>支持同一钩子位置同时设置多个不同功能的拦截器，一个拦截器类实现某一个功能，多个拦截器形成一个</li>
+<li>同一枚举值，对于客户端和服务端表示不同的状态，如 PRE_SEND_MESSAGE 对于客户端表示发送请求消息给服务端之前，对于服务端表示发送返回消息给客户端之前。</li>
+</ul>
+</li>
+<li>grpc::experimental::InterceptorBatchMethods
+<ul>
+<li>QueryInterceptionHookPoint(): 判断当前是否处于指定的拦截器钩子位置</li>
+<li>GetInterceptedChannel(): 获取当前已被拦截的 Channel 实例</li>
+<li>GetSendMessage(): 获取即将被发送的、非序列化形式的、不可修改的请求消息内容，适用于 PRE_SEND_MESSAGE 拦截点</li>
+<li>GetSerializedSendMessage(): 获取即将被发送的、序列化形式的请求消息内容，适用于 PRE_SEND_MESSAGE 拦截点，调用此方法会导致 gRPC 立即进行序列化</li>
+<li>ModifySendMessage(): 重写即将被发送的请求消息内容，适用于 PRE_SEND_MESSAGE 拦截点</li>
+<li>GetRecvMessage(): 获取已接收到的、可修改的返回消息内容，适用于 PRE_RECV_MESSAGE 和 POST_RECV_MESSAGE 拦截点</li>
+<li>GetRecvStatus(): 获取已接收到的、可修改的 RPC 调用结果状态，适用于 PRE_RECV_STATUS 和 POST_RECV_STATUS 拦截点</li>
+<li>Hijack(): 指示有拦截器已经劫持了当前 RPC 调用，只在客户端的 PRE_SEND_INITIAL_METADATA 钩子位置时调用一次，和 Proceed() 不可同时调用。一旦调用本方法，该 RPC 请求默认不会再发送给服务端，如果要继续发送给服务端，可以在拦截器中再手工调用服务端相关 RPC 接口。</li>
+<li>Proceed(): 标识当前拦截器处理已完成，通知给 gRPC runtime ，应该在每次拦截处理完成后调用</li>
+<li>详细介绍见<a href="https://grpc.github.io/grpc/cpp/classgrpc_1_1experimental_1_1_interceptor_batch_methods.html">grpc::experimental::InterceptorBatchMethods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>客户端相关
+<ul>
+<li>grpc::experimental::ClientInterceptorFactoryInterface
+<ul>
+<li>客户端拦截器创建工厂抽象接口，需创建子类继承它</li>
+</ul>
+</li>
+<li>grpc::experimental::ClientRpcInfo
+<ul>
+<li>表示某次特定 RPC 调用的状态信息</li>
+<li>method(): 返回本次调用的 RPC 完整路径方法名</li>
+<li>type(): 返回本次 RPC 的类型，有一元方法(UNARY)、客户端流(CLIENT_STREAMING)、服务端流(SERVER_STREAMING)、双向流(BIDI_STREAMING)</li>
+</ul>
+</li>
+<li>grpc::experimental::CreateCustomChannelWithInterceptors()
+<ul>
+<li>创建带客户端拦截器功能的 Channel 对象，传入拦截器列表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>服务器相关
+<ul>
+<li>grpc::experimental::ServerInterceptorFactoryInterface
+<ul>
+<li>服务端拦截器创建工厂抽象接口，需创建子类继承它</li>
+</ul>
+</li>
+<li>grpc::experimental::ServerRpcInfo
+<ul>
+<li>表示某次特定 RPC 调用的状态信息</li>
+<li>method(): 返回本次调用的 RPC 完整路径方法名</li>
+<li>type(): 返回本次 RPC 的类型，有一元方法(UNARY)、客户端流(CLIENT_STREAMING)、服务端流(SERVER_STREAMING)、双向流(BIDI_STREAMING)</li>
+</ul>
+</li>
+<li>grpc::ServerBuilder
+<ul>
+<li>experimental().SetInterceptorCreators(): 设置服务端拦截器列表</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-1">示例代码</h2>
+<p>这里就不放代码了，实现的统一接口调用日志拦截器，可打印出 RPC 服务名、请求参数(JSON 格式)、返回参数(JSON 格式)、返回结果状态。请直接参考<a href="https://github.com/pj-x86/grpc-cxx-demo">github 示例</a>或<a href="https://gitee.com/pj-x86/grpc-cxx-demo">gitee 示例</a></p>
+<h2 id="heading-2">参考资料</h2>
+<ul>
+<li><a href="https://grpc.github.io/grpc/cpp/classgrpc_1_1experimental_1_1_interceptor_batch_methods.html">grpc::experimental::InterceptorBatchMethods</a></li>
+<li>客户端拦截器实现可参考官方示例[keyvaluestore]</li>
+<li>服务端拦截器实现可参考<a href="https://github.com/grpc/grpc/blob/master/test/cpp/end2end/server_interceptors_end2end_test.cc">LoggingInterceptor</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Jerry Peng </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://pj-x86.github.io/2020/grpc-c-%E6%8B%A6%E6%88%AA%E5%99%A8%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/>https://pj-x86.github.io/2020/grpc-c-%E6%8B%A6%E6%88%AA%E5%99%A8%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://pj-x86.github.io/tags/grpc/">
+                    #gRPC</a></span>
+            
+            <span class="tag"><a href="https://pj-x86.github.io/tags/c&#43;&#43;/">
+                    #C&#43;&#43;</a></span>
+            
+            <span class="tag"><a href="https://pj-x86.github.io/tags/interceptor/">
+                    #Interceptor</a></span>
+            
+            <span class="tag"><a href="https://pj-x86.github.io/tags/%E6%8B%A6%E6%88%AA%E5%99%A8/">
+                    #拦截器</a></span>
+            
+            <span class="tag"><a href="https://pj-x86.github.io/tags/%E6%8E%A5%E5%8F%A3%E6%97%A5%E5%BF%97%E8%BE%93%E5%87%BA/">
+                    #接口日志输出</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://pj-x86.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://pj-x86.github.io/2020/poco%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/" class="prev" rel="prev" title="poco源码安装"><i class="iconfont icon-left"></i>&nbsp;poco源码安装</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://pj-x86.github.io">Jerry Peng</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv"> | 本站访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+        <span id="busuanzi_container_site_uv"> | 您是本站第 <span id="busuanzi_value_site_uv"></span> 位访客</span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
