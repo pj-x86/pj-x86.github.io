@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Jerry Peng">
+  
+  
+  
+  <link rel="prev" href="https://pj-x86.github.io/2020/grpc-c-%E6%8B%A6%E6%88%AA%E5%99%A8%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/" />
+  <link rel="next" href="https://pj-x86.github.io/2020/redhat-7.7%E5%AE%89%E8%A3%85grpc-c-/" />
+  <link rel="canonical" href="https://pj-x86.github.io/2020/grpc%E6%BA%90%E7%A0%81%E4%B8%8B%E8%BD%BD%E5%8A%A0%E9%80%9F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           GRPC源码下载加速 | pj-x86&#39;s blog
+       
+  </title>
+  <meta name="title" content="GRPC源码下载加速 | pj-x86&#39;s blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/pj-x86.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "GRPC源码下载加速",
+    "headline" : "GRPC源码下载加速",
+    "description" : "由于 gRPC 以及依赖的第三方库都是托管在 Github 上，并且源码包总共加起来有 1GB 大小，众所周知，国内从 Github 下载源码速度慢且不稳定，过程令人抓狂。值得庆幸的是，",
+    "inLanguage" : "zh-cn",
+    "author" : "Jerry Peng",
+    "creator" : "Jerry Peng",
+    "publisher": "Jerry Peng",
+    "accountablePerson" : "Jerry Peng",
+    "copyrightHolder" : "Jerry Peng",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-07-16 22:29:07 \x2b0800 CST",
+    "dateModified" : "2020-07-16 22:29:07 \x2b0800 CST",
+    "url" : "https:\/\/pj-x86.github.io\/2020\/grpc%E6%BA%90%E7%A0%81%E4%B8%8B%E8%BD%BD%E5%8A%A0%E9%80%9F\/",
+    "wordCount" : "613",
+    "keywords" : [ "gRPC", "pj-x86\x27s blog"]
+}
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://pj-x86.github.io">pj-x86&#39;s blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">博客</a>
+                
+                <a class="menu-item" href="/categories/" title="">分类</a>
+                
+                <a class="menu-item" href="/tags/" title="">标签</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://pj-x86.github.io">pj-x86&#39;s blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">博客</a>
+                
+                <a class="menu-item" href="/categories/" title="">分类</a>
+                
+                <a class="menu-item" href="/tags/" title="">标签</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">GRPC源码下载加速</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://pj-x86.github.io" rel="author">Jerry Peng</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-07-16 itemprop="datePublished">July 16, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://pj-x86.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        
+                </span>
+                <h5 id="wc">700 Words | Read in About 2 Min | Total Read <span id="busuanzi_value_page_pv"></span> Times </h5>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>由于 gRPC 以及依赖的第三方库都是托管在 Github 上，并且源码包总共加起来有 1GB 大小，众所周知，国内从 Github 下载源码速度慢且不稳定，过程令人抓狂。值得庆幸的是，码云(gitee.com)已对其中部分仓库作了镜像同步，每日自动同步一次，都在<a href="https://gitee.com/mirrors">码云极速下载</a>。因此，我们可借助 gitee.com 实现高速下载 gRPC 的相关源码，但下载时需要做一些适当的调整。操作如下。</p>
+<ul>
+<li>下载 grpc 源码</li>
+</ul>
+<p>可通过 gitee.com 先下载 grpc 主框架源码</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone git@gitee.com:mirrors/grpc.git
+</code></pre></div><ul>
+<li>修改 grpc 依赖的第三方库下载地址</li>
+</ul>
+<p>进入前面下载的 grpc 主框架源码目录，修改 .gitmodules ，只需修改其中的 url 参数，其他保持不变，注意并非每个第三方库都在 gitee.com 上有镜像仓库，没有的保持不变。参考如下</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">➜  grpc-framework git:<span style="color:#f92672">(</span>786ebf69aa<span style="color:#f92672">)</span> ✗ more .gitmodules
+<span style="color:#f92672">[</span>submodule <span style="color:#e6db74">&#34;third_party/zlib&#34;</span><span style="color:#f92672">]</span>
+        path <span style="color:#f92672">=</span> third_party/zlib
+        <span style="color:#75715e">#url = https://github.com/madler/zlib.git</span>
+        url <span style="color:#f92672">=</span> https://gitee.com/mirrors/zlib.git
+        <span style="color:#75715e"># When using CMake to build, the zlib submodule ends up with a</span>
+        <span style="color:#75715e"># generated file that makes Git consider the submodule dirty. This</span>
+        <span style="color:#75715e"># state can be ignored for day-to-day development on gRPC.</span>
+        ignore <span style="color:#f92672">=</span> dirty
+<span style="color:#f92672">[</span>submodule <span style="color:#e6db74">&#34;third_party/protobuf&#34;</span><span style="color:#f92672">]</span>
+        path <span style="color:#f92672">=</span> third_party/protobuf
+        url <span style="color:#f92672">=</span> https://github.com/google/protobuf.git
+        <span style="color:#75715e">#url = https://gitee.com/githubplus/protobuf.git</span>
+<span style="color:#f92672">[</span>submodule <span style="color:#e6db74">&#34;third_party/gflags&#34;</span><span style="color:#f92672">]</span>
+        path <span style="color:#f92672">=</span> third_party/gflags
+        <span style="color:#75715e"># url = https://github.com/gflags/gflags.git</span>
+        url <span style="color:#f92672">=</span> https://gitee.com/mirrors/gflags.git
+<span style="color:#f92672">[</span>submodule <span style="color:#e6db74">&#34;third_party/googletest&#34;</span><span style="color:#f92672">]</span>
+        path <span style="color:#f92672">=</span> third_party/googletest
+        <span style="color:#75715e"># url = https://github.com/google/googletest.git</span>
+        url <span style="color:#f92672">=</span> https://gitee.com/mirrors/googletest.git
+<span style="color:#f92672">[</span>submodule <span style="color:#e6db74">&#34;third_party/benchmark&#34;</span><span style="color:#f92672">]</span>
+        path <span style="color:#f92672">=</span> third_party/benchmark
+        url <span style="color:#f92672">=</span> https://github.com/google/benchmark
+<span style="color:#f92672">[</span>submodule <span style="color:#e6db74">&#34;third_party/boringssl-with-bazel&#34;</span><span style="color:#f92672">]</span>
+        path <span style="color:#f92672">=</span> third_party/boringssl-with-bazel
+        <span style="color:#75715e"># url = https://github.com/google/boringssl.git</span>
+        url <span style="color:#f92672">=</span> https://gitee.com/mirrors/boringssl.git
+<span style="color:#f92672">[</span>submodule <span style="color:#e6db74">&#34;third_party/cares/cares&#34;</span><span style="color:#f92672">]</span>
+        path <span style="color:#f92672">=</span> third_party/cares/cares
+        <span style="color:#75715e"># url = https://github.com/c-ares/c-ares.git</span>
+        url <span style="color:#f92672">=</span> https://gitee.com/mirrors/c-ares.git
+        branch <span style="color:#f92672">=</span> cares-1_12_0
+<span style="color:#f92672">[</span>submodule <span style="color:#e6db74">&#34;third_party/bloaty&#34;</span><span style="color:#f92672">]</span>
+        path <span style="color:#f92672">=</span> third_party/bloaty
+        <span style="color:#75715e"># url = https://github.com/google/bloaty.git</span>
+        url <span style="color:#f92672">=</span> https://gitee.com/githubplus/bloaty.git
+<span style="color:#f92672">[</span>submodule <span style="color:#e6db74">&#34;third_party/abseil-cpp&#34;</span><span style="color:#f92672">]</span>
+        path <span style="color:#f92672">=</span> third_party/abseil-cpp
+        <span style="color:#75715e"># url = https://github.com/abseil/abseil-cpp.git</span>
+        url <span style="color:#f92672">=</span> https://gitee.com/mirrors/abseil-cpp.git
+        branch <span style="color:#f92672">=</span> lts_2020_02_25
+<span style="color:#f92672">[</span>submodule <span style="color:#e6db74">&#34;third_party/envoy-api&#34;</span><span style="color:#f92672">]</span>
+        path <span style="color:#f92672">=</span> third_party/envoy-api
+        url <span style="color:#f92672">=</span> https://github.com/envoyproxy/data-plane-api.git
+        <span style="color:#75715e">#url = https://gitee.com/githubplus/data-plane-api.git</span>
+<span style="color:#f92672">[</span>submodule <span style="color:#e6db74">&#34;third_party/googleapis&#34;</span><span style="color:#f92672">]</span>
+        path <span style="color:#f92672">=</span> third_party/googleapis
+        <span style="color:#75715e"># url = https://github.com/googleapis/googleapis.git</span>
+        url <span style="color:#f92672">=</span> https://gitee.com/mirrors/googleapis.git
+<span style="color:#f92672">[</span>submodule <span style="color:#e6db74">&#34;third_party/protoc-gen-validate&#34;</span><span style="color:#f92672">]</span>
+        path <span style="color:#f92672">=</span> third_party/protoc-gen-validate
+        <span style="color:#75715e"># url = https://github.com/envoyproxy/protoc-gen-validate.git</span>
+        url <span style="color:#f92672">=</span> https://gitee.com/mirrors/protoc-gen-validate.git
+<span style="color:#f92672">[</span>submodule <span style="color:#e6db74">&#34;third_party/udpa&#34;</span><span style="color:#f92672">]</span>
+        path <span style="color:#f92672">=</span> third_party/udpa
+        url <span style="color:#f92672">=</span> https://github.com/cncf/udpa.git
+<span style="color:#f92672">[</span>submodule <span style="color:#e6db74">&#34;third_party/libuv&#34;</span><span style="color:#f92672">]</span>
+        path <span style="color:#f92672">=</span> third_party/libuv
+        <span style="color:#75715e"># url = https://github.com/libuv/libuv.git</span>
+        url <span style="color:#f92672">=</span> https://gitee.com/mirrors/libuv.git
+</code></pre></div><p>更新 git submodule 配置</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git submodule sync
+</code></pre></div><p>更新第三方库源码</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git submodule update --init
+</code></pre></div><p>特殊说明一下，我的 zlib 库一开始没有自动下载到 third_party/zlib 目录，导致后续 grpc 编译失败。重新调整了 .gitmodules ，临时注释了 ignore 参数，再重新更新第三方库，才下载到 zlib 库。grpc 会校验依赖的第三方库的版本是否兼容，因此，不要随便用旧版本的第三方库。
+后续的 grpc 安装过程本文就不再详述。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Jerry Peng </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://pj-x86.github.io/2020/grpc%E6%BA%90%E7%A0%81%E4%B8%8B%E8%BD%BD%E5%8A%A0%E9%80%9F/>https://pj-x86.github.io/2020/grpc%E6%BA%90%E7%A0%81%E4%B8%8B%E8%BD%BD%E5%8A%A0%E9%80%9F/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://pj-x86.github.io/tags/grpc/">
+                    #gRPC</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://pj-x86.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://pj-x86.github.io/2020/grpc-c-%E6%8B%A6%E6%88%AA%E5%99%A8%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/" class="prev" rel="prev" title="GRPC C&#43;&#43;拦截器介绍及使用"><i class="iconfont icon-left"></i>&nbsp;GRPC C&#43;&#43;拦截器介绍及使用</a>
+         
+        
+        <a href="https://pj-x86.github.io/2020/redhat-7.7%E5%AE%89%E8%A3%85grpc-c-/" class="next" rel="next" title="Redhat-7.7安装gRPC-C&#43;&#43;">Redhat-7.7安装gRPC-C&#43;&#43;&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://pj-x86.github.io">Jerry Peng</a> | </span> 
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+        <span id="busuanzi_container_site_pv"> | 本站访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+        <span id="busuanzi_container_site_uv"> | 您是本站第 <span id="busuanzi_value_site_uv"></span> 位访客</span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

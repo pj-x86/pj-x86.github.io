@@ -6,10 +6,28 @@
     <description>Recent content in 技术 on pj-x86&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 21 Jun 2020 14:58:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2020 22:37:25 +0800</lastBuildDate>
     
 	<atom:link href="https://pj-x86.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Redhat-7.7安装gRPC-C&#43;&#43;</title>
+      <link>https://pj-x86.github.io/2020/redhat-7.7%E5%AE%89%E8%A3%85grpc-c-/</link>
+      <pubDate>Thu, 16 Jul 2020 22:37:25 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/2020/redhat-7.7%E5%AE%89%E8%A3%85grpc-c-/</guid>
+      <description>安装环境 操作系统: redhat-7.7-x86_64 gcc版本: 4.8.5 准备工作 安装依赖工具 源码安装 CMake: cmake-3.17.2.tar.gz 检查以下基础工具是否安装 rpm -qa gcc gcc-c++ make autoconf libtool pkgconfig 未安装的则使用 yum install 安装 yum install gcc gcc-c++ make autoconf</description>
+    </item>
+    
+    <item>
+      <title>GRPC源码下载加速</title>
+      <link>https://pj-x86.github.io/2020/grpc%E6%BA%90%E7%A0%81%E4%B8%8B%E8%BD%BD%E5%8A%A0%E9%80%9F/</link>
+      <pubDate>Thu, 16 Jul 2020 22:29:07 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/2020/grpc%E6%BA%90%E7%A0%81%E4%B8%8B%E8%BD%BD%E5%8A%A0%E9%80%9F/</guid>
+      <description>由于 gRPC 以及依赖的第三方库都是托管在 Github 上，并且源码包总共加起来有 1GB 大小，众所周知，国内从 Github 下载源码速度慢且不稳定，过程令人抓狂。值得庆幸的是，</description>
+    </item>
     
     <item>
       <title>GRPC C&#43;&#43;拦截器介绍及使用</title>

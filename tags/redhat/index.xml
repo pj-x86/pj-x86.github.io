@@ -6,10 +6,19 @@
     <description>Recent content in redhat on pj-x86&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 28 May 2020 23:04:19 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2020 22:37:25 +0800</lastBuildDate>
     
 	<atom:link href="https://pj-x86.github.io/tags/redhat/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Redhat-7.7安装gRPC-C&#43;&#43;</title>
+      <link>https://pj-x86.github.io/2020/redhat-7.7%E5%AE%89%E8%A3%85grpc-c-/</link>
+      <pubDate>Thu, 16 Jul 2020 22:37:25 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/2020/redhat-7.7%E5%AE%89%E8%A3%85grpc-c-/</guid>
+      <description>安装环境 操作系统: redhat-7.7-x86_64 gcc版本: 4.8.5 准备工作 安装依赖工具 源码安装 CMake: cmake-3.17.2.tar.gz 检查以下基础工具是否安装 rpm -qa gcc gcc-c++ make autoconf libtool pkgconfig 未安装的则使用 yum install 安装 yum install gcc gcc-c++ make autoconf</description>
+    </item>
     
     <item>
       <title>poco源码安装</title>
