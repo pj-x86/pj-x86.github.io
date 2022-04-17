@@ -54,11 +54,11 @@
     "accountablePerson" : "Jerry Peng",
     "copyrightHolder" : "Jerry Peng",
     "copyrightYear" : "2019",
-    "datePublished": "2019-12-29 14:48:09 \x2b0800 CST",
-    "dateModified" : "2019-12-29 14:48:09 \x2b0800 CST",
+    "datePublished": "2019-12-29 14:48:09 \u002b0800 CST",
+    "dateModified" : "2019-12-29 14:48:09 \u002b0800 CST",
     "url" : "https:\/\/pj-x86.github.io\/2019\/%E6%94%B9%E9%80%A0go-kit%E5%AE%98%E6%96%B9%E7%A4%BA%E4%BE%8B%E5%AF%B9%E6%8E%A5eureka\/",
     "wordCount" : "654",
-    "keywords" : [ "go-kit","golang","eureka","微服务","服务注册与发现", "pj-x86\x27s blog"]
+    "keywords" : [ "go-kit","golang","eureka","微服务","服务注册与发现", "pj-x86\u0027s blog"]
 }
 </script>
 
@@ -150,9 +150,9 @@
           
           
 
-          <h2 id="heading">前言</h2>
+          <h2 id="前言">前言</h2>
 <p>近期学习 go-kit 的官方示例时，发现并未有对接 eureka 的参考代码，而我司目前的微服务架构是基于 spring cloud ，服务注册中心用的是 eureka ，因此，便试着改造一下官方的例子，也顺便验证一下 go-kit 框架的服务注册与发现功能。以下为基本操作过程。</p>
-<h2 id="heading-1">操作过程</h2>
+<h2 id="操作过程">操作过程</h2>
 <ol>
 <li>启动 eureka server ，单节点</li>
 </ol>
@@ -200,7 +200,7 @@ ts=2019-12-29T02:12:44.307608Z caller=instancer.go:58 app=addsvc instances=1
 </ol>
 <p>通过网关转发请求至后端服务</p>
 <pre><code>curl -XPOST -d'{&quot;s&quot;:&quot;hello, world&quot;}' http://127.0.0.1:8000/stringsvc/uppercase
-</code></pre><h2 id="heading-2">遇到的问题</h2>
+</code></pre><h2 id="遇到的问题">遇到的问题</h2>
 <ol>
 <li>addsvc 使用 hudl/fargo 包向 eureka server 进行服务注册时，一开始时对 fargo.Instance 的 InstanceId 错误地赋值为addsvc_1，导致服务可以注册上去，但后续的心跳总是返回 404，当时日志中打印的心跳 url 是类似 http://127.0.0.1:8761/eureka/apps/addsvc/addsvc_1 。查了很多资料，也没有明白原因。后来通过研究 hudl/fargo 的示例，发现官方示例并不会主动对 InstanceId 进行赋值，于是尝试去除该代码后，果然心跳就成功了。然后，心跳 url 就变成了类似 http://127.0.0.1:8761/eureka/apps/addsvc/192.168.11.5:8082 ，路径最后的 “192.168.11.5:8082” 是代码中指定的 HostName 。</li>
 </ol>
@@ -278,7 +278,7 @@ ts=2019-12-29T02:12:44.307608Z caller=instancer.go:58 app=addsvc instances=1
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2019 - 2020</span>
+        <span itemprop="copyrightYear">2019 - 2022</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i> 

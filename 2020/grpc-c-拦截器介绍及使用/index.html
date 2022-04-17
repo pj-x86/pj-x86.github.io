@@ -44,9 +44,9 @@
          "@id": "https:\/\/pj-x86.github.io"
     },
     "articleSection" : "posts",
-    "name" : "GRPC C\x2b\x2b拦截器介绍及使用",
-    "headline" : "GRPC C\x2b\x2b拦截器介绍及使用",
-    "description" : "基本介绍 gRPC-C\x2b\x2b目前提供了实验性的拦截器功能，暂时放在名字空间 grpc::experimental 下，意味着该功能还不稳定，以后可能会有变化。本文基于当前的 grpc-1.28 版本进行",
+    "name" : "GRPC C\u002b\u002b拦截器介绍及使用",
+    "headline" : "GRPC C\u002b\u002b拦截器介绍及使用",
+    "description" : "基本介绍 gRPC-C\u002b\u002b目前提供了实验性的拦截器功能，暂时放在名字空间 grpc::experimental 下，意味着该功能还不稳定，以后可能会有变化。本文基于当前的 grpc-1.28 版本进行",
     "inLanguage" : "zh-cn",
     "author" : "Jerry Peng",
     "creator" : "Jerry Peng",
@@ -54,11 +54,11 @@
     "accountablePerson" : "Jerry Peng",
     "copyrightHolder" : "Jerry Peng",
     "copyrightYear" : "2020",
-    "datePublished": "2020-06-21 14:58:00 \x2b0800 CST",
-    "dateModified" : "2020-06-21 14:58:00 \x2b0800 CST",
+    "datePublished": "2020-06-21 14:58:00 \u002b0800 CST",
+    "dateModified" : "2020-06-21 14:58:00 \u002b0800 CST",
     "url" : "https:\/\/pj-x86.github.io\/2020\/grpc-c-%E6%8B%A6%E6%88%AA%E5%99%A8%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8\/",
     "wordCount" : "1366",
-    "keywords" : [ "gRPC","C\x2b\x2b","Interceptor","拦截器","接口日志输出", "pj-x86\x27s blog"]
+    "keywords" : [ "gRPC","C\u002b\u002b","Interceptor","拦截器","接口日志输出", "pj-x86\u0027s blog"]
 }
 </script>
 
@@ -150,10 +150,10 @@
           
           
 
-          <h2 id="heading">基本介绍</h2>
+          <h2 id="基本介绍">基本介绍</h2>
 <p>gRPC-C++目前提供了实验性的拦截器功能，暂时放在名字空间 grpc::experimental 下，意味着该功能还不稳定，以后可能会有变化。本文基于当前的 grpc-1.28 版本进行介绍。</p>
 <p>拦截器分为客户端拦截器和服务端拦截器。其用途一般在于处理接口的通用功能，如统一的认证鉴权、接口调用日志输出等。本文主要以输出接口调用日志为例进行介绍。</p>
-<h2 id="-api">相关类和 API</h2>
+<h2 id="相关类和-api">相关类和 API</h2>
 <p>无论是服务端还是客户端，都是基于相同的公共类实现拦截器功能，这几个类主要是 Interceptor,InterceptorBatchMethods,InterceptionHookPoints 。通常做法是自定义一个拦截器类，如 ClientLoggingInterceptor 继承 Interceptor 类，并实现其方法 Intercept()，在其中编写针对指定钩子位置的处理代码。然后，自定义拦截器工厂类，也是继承 ClientInterceptorFactoryInterface 或 ServerInterceptorFactoryInterface 类。最后，在客户端或服务端入口创建通信层代码中设置拦截器。</p>
 <ul>
 <li>头文件
@@ -236,9 +236,9 @@
 </ul>
 </li>
 </ul>
-<h2 id="heading-1">示例代码</h2>
+<h2 id="示例代码">示例代码</h2>
 <p>这里就不放代码了，实现的统一接口调用日志拦截器，可打印出 RPC 服务名、请求参数(JSON 格式)、返回参数(JSON 格式)、返回结果状态。请直接参考<a href="https://github.com/pj-x86/grpc-cxx-demo">github 示例</a>或<a href="https://gitee.com/pj-x86/grpc-cxx-demo">gitee 示例</a></p>
-<h2 id="heading-2">参考资料</h2>
+<h2 id="参考资料">参考资料</h2>
 <ul>
 <li><a href="https://grpc.github.io/grpc/cpp/classgrpc_1_1experimental_1_1_interceptor_batch_methods.html">grpc::experimental::InterceptorBatchMethods</a></li>
 <li>客户端拦截器实现可参考官方示例[keyvaluestore]</li>
@@ -318,7 +318,7 @@
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2019 - 2020</span>
+        <span itemprop="copyrightYear">2019 - 2022</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i> 

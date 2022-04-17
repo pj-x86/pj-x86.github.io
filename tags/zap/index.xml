@@ -6,11 +6,7 @@
     <description>Recent content in zap on pj-x86&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 02 Jan 2020 23:17:27 +0800</lastBuildDate>
-    
-	<atom:link href="https://pj-x86.github.io/tags/zap/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 02 Jan 2020 23:17:27 +0800</lastBuildDate><atom:link href="https://pj-x86.github.io/tags/zap/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>基于zap和lumberjack实现滚动日志</title>
       <link>https://pj-x86.github.io/2020/%E5%9F%BA%E4%BA%8Ezap%E5%92%8Clumberjack%E5%AE%9E%E7%8E%B0%E6%BB%9A%E5%8A%A8%E6%97%A5%E5%BF%97/</link>

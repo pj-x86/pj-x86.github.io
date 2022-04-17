@@ -54,11 +54,11 @@
     "accountablePerson" : "Jerry Peng",
     "copyrightHolder" : "Jerry Peng",
     "copyrightYear" : "2020",
-    "datePublished": "2020-01-10 21:07:05 \x2b0800 CST",
-    "dateModified" : "2020-01-10 21:07:05 \x2b0800 CST",
+    "datePublished": "2020-01-10 21:07:05 \u002b0800 CST",
+    "dateModified" : "2020-01-10 21:07:05 \u002b0800 CST",
     "url" : "https:\/\/pj-x86.github.io\/2020\/%E4%BD%BF%E7%94%A8go-oci8%E8%BF%9E%E6%8E%A5oracle\/",
     "wordCount" : "600",
-    "keywords" : [ "golang","oracle","oci8","macos","linux", "pj-x86\x27s blog"]
+    "keywords" : [ "golang","oracle","oci8","macos","linux", "pj-x86\u0027s blog"]
 }
 </script>
 
@@ -150,8 +150,8 @@
           
           
 
-          <h2 id="heading">安装</h2>
-<h3 id="-oracle-">安装 oracle 客户端</h3>
+          <h2 id="安装">安装</h2>
+<h3 id="安装-oracle-客户端">安装 oracle 客户端</h3>
 <ul>
 <li>MacOS</li>
 </ul>
@@ -161,13 +161,13 @@
 <li>Redhat Linux</li>
 </ul>
 <p>由于机器上已安装了 oracle 11.2.0 的客户端，不再安装即时客户端。</p>
-<h3 id="-cc">安装 c/c++</h3>
+<h3 id="安装-cc">安装 c/c++</h3>
 <p>一般默认都已安装，跳过</p>
-<h3 id="-pkg-config">安装 pkg-config</h3>
+<h3 id="安装-pkg-config">安装 pkg-config</h3>
 <p>使用 pkg-config &ndash;help 可确认是否已安装，如果没有安装，可到<a href="https://www.freedesktop.org/wiki/Software/pkg-config/">官网</a>下载源码编译安装，也可以使用软件包管理工具进行安装。</p>
-<h3 id="-go-oci8">下载依赖库 go-oci8</h3>
+<h3 id="下载依赖库-go-oci8">下载依赖库 go-oci8</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">go get -v -u github.com/mattn/go-oci8
-</code></pre></div><h3 id="-pkg-config-">编写 pkg-config 配置文件</h3>
+</code></pre></div><h3 id="编写-pkg-config-配置文件">编写 pkg-config 配置文件</h3>
 <p>创建一个 oci8.pc 文件，内容如下。注意， prefixdir 为你的 oracle 客户端所在目录</p>
 <ul>
 <li>MacOS</li>
@@ -198,7 +198,7 @@ Cflags: -I<span style="color:#e6db74">${</span>includedir<span style="color:#e6d
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export PKG_CONFIG_PATH<span style="color:#f92672">=</span>$PKG_CONFIG_PATH:/Users/xxx/tools/instantclient_19_3
 </code></pre></div><p>最后检查 oci8.pc 的正确性，打开新终端，执行 pkg-config &ndash;libs &ndash;cflags oci8 ，如果输出类似如下，表示配置成功。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-I/Users/xxx/tools/instantclient_19_3/sdk/include -L/Users/xxx/tools/instantclient_19_3 -lclntsh
-</code></pre></div><h2 id="heading-1">测试示例</h2>
+</code></pre></div><h2 id="测试示例">测试示例</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
 <span style="color:#f92672">import</span> (
@@ -245,7 +245,7 @@ Cflags: -I<span style="color:#e6db74">${</span>includedir<span style="color:#e6d
 </code></pre></div><p>编译执行</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">go build .
 ./oracle_test scott/tiger@192.168.11.22:1521/orcl
-</code></pre></div><h2 id="heading-2">参考资料</h2>
+</code></pre></div><h2 id="参考资料">参考资料</h2>
 <ul>
 <li><a href="https://github.com/mattn/go-oci8">go-oci8 官方源码</a></li>
 <li><a href="https://www.jianshu.com/p/add47894c446">Go 使用 go-oci8 访问 Oracle 示例</a></li>
@@ -327,7 +327,7 @@ Cflags: -I<span style="color:#e6db74">${</span>includedir<span style="color:#e6d
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2019 - 2020</span>
+        <span itemprop="copyrightYear">2019 - 2022</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i> 

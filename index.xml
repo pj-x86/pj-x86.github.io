@@ -9,24 +9,46 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>关于我</title>
+      <link>https://pj-x86.github.io/about/</link>
+      <pubDate>Sun, 17 Apr 2022 15:22:56 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/about/</guid>
+      <description>&lt;h2 id=&#34;文字之美&#34;&gt;文字之美&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;有一种英雄主义，是洞悉了生活的所有真相之后，仍然热爱生活。&lt;/li&gt;
+&lt;li&gt;心有猛虎，细嗅蔷薇。&lt;/li&gt;
+&lt;li&gt;生如夏花之绚烂，死如秋叶之静美。&lt;/li&gt;
+&lt;li&gt;不知原谅什么，诚觉世事皆可原谅。&lt;/li&gt;
+&lt;li&gt;世间安得两全法，不负如来不负卿。&lt;/li&gt;
+&lt;li&gt;罗素：有三种情感，单纯而强烈，支配着我的一生：对爱情的渴望，对知识的追求，以及对人类苦难不可遏制的同情。&lt;/li&gt;
+&lt;li&gt;趁年轻，好好利用这个机会，尽力去尝遍所有痛苦，这种事可不是一辈子什么时候都会遇到的。——《霍乱时期的爱情》&lt;/li&gt;
+&lt;li&gt;生命中真正重要的不是你遭遇了什么，而是你记住了哪些事，又是如何铭记的。——《百年孤独》&lt;/li&gt;
+&lt;li&gt;我来这个世界，不是为了繁衍后代；而是来看花怎么开、水怎么流，太阳怎么升起，夕阳何时落下。我活在世上，无非想要明白些道理，遇见些有趣的事，生命是场偶然，我在其中寻找因果。——王小波&lt;/li&gt;
+&lt;li&gt;安度晚年的秘诀是，和孤独签下一份体面的协议。——《百年孤独》&lt;/li&gt;
+&lt;li&gt;极简模式，就是专注自己的人生，专注所热爱的事情，不被繁杂绑架。——《天道》&lt;/li&gt;
+&lt;li&gt;世间万物都需要额外的能量和秩序来维持自身，无一例外。这就是著名的热力学第二定律，即所有的事务都在缓慢地分崩离析。——凯文•凯利《必然》&lt;/li&gt;
+&lt;li&gt;神秀和尚说：身是菩提树，心如明镜台，时时勤拂拭，莫使有尘埃。&lt;/li&gt;
+&lt;li&gt;六祖慧能说：菩提本无树，明镜亦非台；本来无一物，何处惹尘埃！&lt;/li&gt;
+&lt;li&gt;王阳明说：无善无恶心之体，有善有恶意之动，知善知恶是良知，为善去恶是格物。&lt;/li&gt;
+&lt;li&gt;大唐李白：醉中别无长言，但知世事固有不必付之吟咏者矣。&lt;/li&gt;
+&lt;li&gt;要想生活得漂亮，一不抱怨，二不解释。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;设计之美&#34;&gt;设计之美&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;如无必要，勿增实体。&lt;/li&gt;
+&lt;li&gt;Keep It Simple, Stupid.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Posts</title>
       <link>https://pj-x86.github.io/posts/</link>
       <pubDate>Thu, 16 Jul 2020 22:37:25 +0800</pubDate>
       
       <guid>https://pj-x86.github.io/posts/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>关于我</title>
-      <link>https://pj-x86.github.io/about/</link>
-      <pubDate>Sat, 21 Dec 2019 16:32:56 +0800</pubDate>
-      
-      <guid>https://pj-x86.github.io/about/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;世间安得两全法，不负如来不负卿。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;如无必要，勿增实体。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Keep It Simple, Stupid.&lt;/strong&gt;&lt;/p&gt;
-</description>
     </item>
     
   </channel>
