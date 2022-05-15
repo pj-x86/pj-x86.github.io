@@ -5,8 +5,17 @@
     <description>Recent content in pj-x86&#39;s blog on pj-x86&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 16 Jul 2020 22:37:25 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 15 May 2022 09:37:25 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Posts</title>
+      <link>https://pj-x86.github.io/posts/</link>
+      <pubDate>Sun, 15 May 2022 09:37:25 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/posts/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>关于我</title>
@@ -40,15 +49,6 @@
 &lt;li&gt;Keep It Simple, Stupid.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Posts</title>
-      <link>https://pj-x86.github.io/posts/</link>
-      <pubDate>Thu, 16 Jul 2020 22:37:25 +0800</pubDate>
-      
-      <guid>https://pj-x86.github.io/posts/</guid>
-      <description></description>
     </item>
     
   </channel>

@@ -6,7 +6,16 @@
     <description>Recent content in 技术 on pj-x86&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 16 Jul 2020 22:37:25 +0800</lastBuildDate><atom:link href="https://pj-x86.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 May 2022 09:37:25 +0800</lastBuildDate><atom:link href="https://pj-x86.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>重要技术网站整理</title>
+      <link>https://pj-x86.github.io/2022/%E9%87%8D%E8%A6%81%E6%8A%80%E6%9C%AF%E7%BD%91%E7%AB%99%E5%8D%9A%E5%AE%A2%E6%95%B4%E7%90%86/</link>
+      <pubDate>Sun, 15 May 2022 09:37:25 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/2022/%E9%87%8D%E8%A6%81%E6%8A%80%E6%9C%AF%E7%BD%91%E7%AB%99%E5%8D%9A%E5%AE%A2%E6%95%B4%E7%90%86/</guid>
+      <description>国内主流技术网站 CSDN InfoQ 博客园 SegmentFault 开源中国 51CTO ChinaUnix 掘金 V2EX helloworld 开发者头条 极客时间 腾讯云技术社区 阿里云开发者社区 gitee(码云) 国外主流技术网站 GitHub Medium stackoverflow Hacker News</description>
+    </item>
+    
     <item>
       <title>Redhat-7.7安装gRPC-C&#43;&#43;</title>
       <link>https://pj-x86.github.io/2020/redhat-7.7%E5%AE%89%E8%A3%85grpc-c-/</link>

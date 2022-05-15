@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>优秀博客 on pj-x86&#39;s blog</title>
+    <link>https://pj-x86.github.io/tags/%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2/</link>
+    <description>Recent content in 优秀博客 on pj-x86&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 15 May 2022 09:37:25 +0800</lastBuildDate><atom:link href="https://pj-x86.github.io/tags/%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>重要技术网站整理</title>
+      <link>https://pj-x86.github.io/2022/%E9%87%8D%E8%A6%81%E6%8A%80%E6%9C%AF%E7%BD%91%E7%AB%99%E5%8D%9A%E5%AE%A2%E6%95%B4%E7%90%86/</link>
+      <pubDate>Sun, 15 May 2022 09:37:25 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/2022/%E9%87%8D%E8%A6%81%E6%8A%80%E6%9C%AF%E7%BD%91%E7%AB%99%E5%8D%9A%E5%AE%A2%E6%95%B4%E7%90%86/</guid>
+      <description>国内主流技术网站 CSDN InfoQ 博客园 SegmentFault 开源中国 51CTO ChinaUnix 掘金 V2EX helloworld 开发者头条 极客时间 腾讯云技术社区 阿里云开发者社区 gitee(码云) 国外主流技术网站 GitHub Medium stackoverflow Hacker News</description>
+    </item>
+    
+  </channel>
+</rss>
