@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql on pj-x86&#39;s blog</title>
+    <link>https://pj-x86.github.io/tags/mysql/</link>
+    <description>Recent content in mysql on pj-x86&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 27 Jun 2022 07:11:05 +0800</lastBuildDate><atom:link href="https://pj-x86.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Golang&#43;Vue&#43;MySQL应用编译环境搭建手册</title>
+      <link>https://pj-x86.github.io/2022/golang-vue-mysql%E5%BA%94%E7%94%A8%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E6%89%8B%E5%86%8C/</link>
+      <pubDate>Mon, 27 Jun 2022 07:11:05 +0800</pubDate>
+      
+      <guid>https://pj-x86.github.io/2022/golang-vue-mysql%E5%BA%94%E7%94%A8%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E6%89%8B%E5%86%8C/</guid>
+      <description>基本信息 前端: Vue 2.0+ 后端: Golang 1.16.5+ 数据库: MySQL 5.7 输出制品: Docker镜像 软件包位置: /root/soft 环境要求 操作系统：redhat-7.4 安装软件 配置 yum 源 cd /etc/yum.repos.d #</description>
+    </item>
+    
+  </channel>
+</rss>
