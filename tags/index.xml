@@ -4,269 +4,226 @@
     <title>Tags on pj-x86&#39;s blog</title>
     <link>https://pj-x86.github.io/tags/</link>
     <description>Recent content in Tags on pj-x86&#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 27 Jun 2022 07:11:05 +0800</lastBuildDate><atom:link href="https://pj-x86.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Jul 2024 16:27:07 +0800</lastBuildDate>
+    <atom:link href="https://pj-x86.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>docker</title>
+      <title>Java</title>
+      <link>https://pj-x86.github.io/tags/java/</link>
+      <pubDate>Sat, 06 Jul 2024 16:27:07 +0800</pubDate>
+      <guid>https://pj-x86.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sftp</title>
+      <link>https://pj-x86.github.io/tags/sftp/</link>
+      <pubDate>Sat, 06 Jul 2024 16:27:07 +0800</pubDate>
+      <guid>https://pj-x86.github.io/tags/sftp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Docker</title>
       <link>https://pj-x86.github.io/tags/docker/</link>
       <pubDate>Mon, 27 Jun 2022 07:11:05 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/docker/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>golang</title>
+      <title>Golang</title>
       <link>https://pj-x86.github.io/tags/golang/</link>
       <pubDate>Mon, 27 Jun 2022 07:11:05 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/golang/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>linux</title>
+      <title>Linux</title>
       <link>https://pj-x86.github.io/tags/linux/</link>
       <pubDate>Mon, 27 Jun 2022 07:11:05 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/linux/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>mysql</title>
+      <title>Mysql</title>
       <link>https://pj-x86.github.io/tags/mysql/</link>
       <pubDate>Mon, 27 Jun 2022 07:11:05 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/mysql/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>vue</title>
+      <title>Vue</title>
       <link>https://pj-x86.github.io/tags/vue/</link>
       <pubDate>Mon, 27 Jun 2022 07:11:05 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/vue/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>优秀博客</title>
-      <link>https://pj-x86.github.io/tags/%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2/</link>
-      <pubDate>Sun, 15 May 2022 09:37:25 +0800</pubDate>
-      
-      <guid>https://pj-x86.github.io/tags/%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2/</guid>
-      <description></description>
-    </item>
-    
     <item>
       <title>技术网站</title>
       <link>https://pj-x86.github.io/tags/%E6%8A%80%E6%9C%AF%E7%BD%91%E7%AB%99/</link>
       <pubDate>Sun, 15 May 2022 09:37:25 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/%E6%8A%80%E6%9C%AF%E7%BD%91%E7%AB%99/</guid>
       <description></description>
     </item>
-    
+    <item>
+      <title>优秀博客</title>
+      <link>https://pj-x86.github.io/tags/%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Sun, 15 May 2022 09:37:25 +0800</pubDate>
+      <guid>https://pj-x86.github.io/tags/%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2/</guid>
+      <description></description>
+    </item>
     <item>
       <title>C&#43;&#43;</title>
       <link>https://pj-x86.github.io/tags/c&#43;&#43;/</link>
       <pubDate>Thu, 16 Jul 2020 22:37:25 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/c&#43;&#43;/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>gRPC</title>
+      <title>GRPC</title>
       <link>https://pj-x86.github.io/tags/grpc/</link>
       <pubDate>Thu, 16 Jul 2020 22:37:25 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/grpc/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>redhat</title>
+      <title>Redhat</title>
       <link>https://pj-x86.github.io/tags/redhat/</link>
       <pubDate>Thu, 16 Jul 2020 22:37:25 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/redhat/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Interceptor</title>
       <link>https://pj-x86.github.io/tags/interceptor/</link>
       <pubDate>Sun, 21 Jun 2020 14:58:00 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/interceptor/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>拦截器</title>
-      <link>https://pj-x86.github.io/tags/%E6%8B%A6%E6%88%AA%E5%99%A8/</link>
-      <pubDate>Sun, 21 Jun 2020 14:58:00 +0800</pubDate>
-      
-      <guid>https://pj-x86.github.io/tags/%E6%8B%A6%E6%88%AA%E5%99%A8/</guid>
-      <description></description>
-    </item>
-    
     <item>
       <title>接口日志输出</title>
       <link>https://pj-x86.github.io/tags/%E6%8E%A5%E5%8F%A3%E6%97%A5%E5%BF%97%E8%BE%93%E5%87%BA/</link>
       <pubDate>Sun, 21 Jun 2020 14:58:00 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/%E6%8E%A5%E5%8F%A3%E6%97%A5%E5%BF%97%E8%BE%93%E5%87%BA/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>c&#43;&#43;11</title>
+      <title>拦截器</title>
+      <link>https://pj-x86.github.io/tags/%E6%8B%A6%E6%88%AA%E5%99%A8/</link>
+      <pubDate>Sun, 21 Jun 2020 14:58:00 +0800</pubDate>
+      <guid>https://pj-x86.github.io/tags/%E6%8B%A6%E6%88%AA%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C&#43;&#43;11</title>
       <link>https://pj-x86.github.io/tags/c&#43;&#43;11/</link>
       <pubDate>Thu, 28 May 2020 23:04:19 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/c&#43;&#43;11/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>poco</title>
+      <title>Poco</title>
       <link>https://pj-x86.github.io/tags/poco/</link>
       <pubDate>Thu, 28 May 2020 23:04:19 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/poco/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>gcc</title>
+      <title>Gcc</title>
       <link>https://pj-x86.github.io/tags/gcc/</link>
       <pubDate>Thu, 28 May 2020 22:27:17 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/gcc/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>macos</title>
+      <title>Macos</title>
       <link>https://pj-x86.github.io/tags/macos/</link>
       <pubDate>Fri, 10 Jan 2020 21:07:05 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/macos/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>oci8</title>
+      <title>Oci8</title>
       <link>https://pj-x86.github.io/tags/oci8/</link>
       <pubDate>Fri, 10 Jan 2020 21:07:05 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/oci8/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>oracle</title>
+      <title>Oracle</title>
       <link>https://pj-x86.github.io/tags/oracle/</link>
       <pubDate>Fri, 10 Jan 2020 21:07:05 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/oracle/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>logging</title>
+      <title>Logging</title>
       <link>https://pj-x86.github.io/tags/logging/</link>
       <pubDate>Thu, 02 Jan 2020 23:17:27 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/logging/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>lumberjack</title>
+      <title>Lumberjack</title>
       <link>https://pj-x86.github.io/tags/lumberjack/</link>
       <pubDate>Thu, 02 Jan 2020 23:17:27 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/lumberjack/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>zap</title>
+      <title>Zap</title>
       <link>https://pj-x86.github.io/tags/zap/</link>
       <pubDate>Thu, 02 Jan 2020 23:17:27 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/zap/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>eureka</title>
+      <title>Eureka</title>
       <link>https://pj-x86.github.io/tags/eureka/</link>
       <pubDate>Sun, 29 Dec 2019 14:48:09 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/eureka/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>go-kit</title>
+      <title>Go-Kit</title>
       <link>https://pj-x86.github.io/tags/go-kit/</link>
       <pubDate>Sun, 29 Dec 2019 14:48:09 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/go-kit/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>微服务</title>
-      <link>https://pj-x86.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
-      <pubDate>Sun, 29 Dec 2019 14:48:09 +0800</pubDate>
-      
-      <guid>https://pj-x86.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
-      <description></description>
-    </item>
-    
     <item>
       <title>服务注册与发现</title>
       <link>https://pj-x86.github.io/tags/%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/</link>
       <pubDate>Sun, 29 Dec 2019 14:48:09 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>consul</title>
+      <title>微服务</title>
+      <link>https://pj-x86.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Sun, 29 Dec 2019 14:48:09 +0800</pubDate>
+      <guid>https://pj-x86.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Consul</title>
       <link>https://pj-x86.github.io/tags/consul/</link>
       <pubDate>Sat, 21 Dec 2019 23:37:57 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/consul/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>git</title>
+      <title>Git</title>
       <link>https://pj-x86.github.io/tags/git/</link>
       <pubDate>Sat, 21 Dec 2019 23:13:15 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/git/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>github</title>
+      <title>Github</title>
       <link>https://pj-x86.github.io/tags/github/</link>
       <pubDate>Sat, 21 Dec 2019 23:13:15 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/tags/github/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

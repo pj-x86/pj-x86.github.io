@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on pj-x86&#39;s blog</title>
+    <link>https://pj-x86.github.io/tags/java/</link>
+    <description>Recent content in Java on pj-x86&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 06 Jul 2024 16:27:07 +0800</lastBuildDate>
+    <atom:link href="https://pj-x86.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jsch连接sftp服务器异常排查思路和解决方案</title>
+      <link>https://pj-x86.github.io/2024/jsch%E8%BF%9E%E6%8E%A5sftp%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5%E6%80%9D%E8%B7%AF%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Sat, 06 Jul 2024 16:27:07 +0800</pubDate>
+      <guid>https://pj-x86.github.io/2024/jsch%E8%BF%9E%E6%8E%A5sftp%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5%E6%80%9D%E8%B7%AF%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</guid>
+      <description>背景介绍 链接到标题 在使用 jsch-0.1.54 连接 sftp 服务器时，出现如下异常： com.jcraft.jsch.JSchException: Session.connect: java.io.IOException: End of IO Stream Read at com.jcraft.jsch.Session.connect(Session.java:565) at com.jcraft.jsch.Session.connect(Session.java:183) 网上搜索一番后，大概确定可能是客户端与服务端使用的 SSH2 协议不兼</description>
+    </item>
+  </channel>
+</rss>

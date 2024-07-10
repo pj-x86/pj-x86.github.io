@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>zap on pj-x86&#39;s blog</title>
+    <title>Zap on pj-x86&#39;s blog</title>
     <link>https://pj-x86.github.io/tags/zap/</link>
-    <description>Recent content in zap on pj-x86&#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Zap on pj-x86&#39;s blog</description>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 02 Jan 2020 23:17:27 +0800</lastBuildDate><atom:link href="https://pj-x86.github.io/tags/zap/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Jan 2020 23:17:27 +0800</lastBuildDate>
+    <atom:link href="https://pj-x86.github.io/tags/zap/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>基于zap和lumberjack实现滚动日志</title>
       <link>https://pj-x86.github.io/2020/%E5%9F%BA%E4%BA%8Ezap%E5%92%8Clumberjack%E5%AE%9E%E7%8E%B0%E6%BB%9A%E5%8A%A8%E6%97%A5%E5%BF%97/</link>
       <pubDate>Thu, 02 Jan 2020 23:17:27 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/2020/%E5%9F%BA%E4%BA%8Ezap%E5%92%8Clumberjack%E5%AE%9E%E7%8E%B0%E6%BB%9A%E5%8A%A8%E6%97%A5%E5%BF%97/</guid>
-      <description>前言 本文学习了如何使用 uber 开源的高性能日志库 zap ，以下为完整程序，稍做完善，可用于生产环境。 // 作者: pj-x86 // 日期: 2020-01-02 // 功能: 本程序基于 zap 和 lumberjack 实现以下</description>
+      <description>前言 链接到标题 本文学习了如何使用 uber 开源的高性能日志库 zap ，以下为完整程序，稍做完善，可用于生产环境。 // 作者: pj-x86 // 日期: 2020-01-02 // 功能: 本程序基于 zap 和</description>
     </item>
-    
   </channel>
 </rss>

@@ -4,35 +4,30 @@
     <title>C&#43;&#43; on pj-x86&#39;s blog</title>
     <link>https://pj-x86.github.io/tags/c&#43;&#43;/</link>
     <description>Recent content in C&#43;&#43; on pj-x86&#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 16 Jul 2020 22:37:25 +0800</lastBuildDate><atom:link href="https://pj-x86.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 16 Jul 2020 22:37:25 +0800</lastBuildDate>
+    <atom:link href="https://pj-x86.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Redhat-7.7安装gRPC-C&#43;&#43;</title>
       <link>https://pj-x86.github.io/2020/redhat-7.7%E5%AE%89%E8%A3%85grpc-c-/</link>
       <pubDate>Thu, 16 Jul 2020 22:37:25 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/2020/redhat-7.7%E5%AE%89%E8%A3%85grpc-c-/</guid>
-      <description>安装环境 操作系统: redhat-7.7-x86_64 gcc版本: 4.8.5 准备工作 安装依赖工具 源码安装 CMake: cmake-3.17.2.tar.gz 检查以下基础工具是否安装 rpm -qa gcc gcc-c++ make autoconf libtool pkgconfig 未安装的则使用 yum install 安装 yum install gcc gcc-c++ make autoconf</description>
+      <description>安装环境 链接到标题 操作系统: redhat-7.7-x86_64 gcc版本: 4.8.5 准备工作 链接到标题 安装依赖工具 源码安装 CMake: cmake-3.17.2.tar.gz 检查以下基础工具是否安装 rpm -qa gcc gcc-c++ make autoconf libtool pkgconfig 未安装的则使用</description>
     </item>
-    
     <item>
       <title>GRPC C&#43;&#43;拦截器介绍及使用</title>
       <link>https://pj-x86.github.io/2020/grpc-c-%E6%8B%A6%E6%88%AA%E5%99%A8%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Sun, 21 Jun 2020 14:58:00 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/2020/grpc-c-%E6%8B%A6%E6%88%AA%E5%99%A8%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/</guid>
-      <description>基本介绍 gRPC-C++目前提供了实验性的拦截器功能，暂时放在名字空间 grpc::experimental 下，意味着该功能还不稳定，以后可能会有变化。本文基于当前的 grpc-1.28 版本进行</description>
+      <description>基本介绍 链接到标题 gRPC-C++目前提供了实验性的拦截器功能，暂时放在名字空间 grpc::experimental 下，意味着该功能还不稳定，以后可能会有变化。本文基于当前的</description>
     </item>
-    
     <item>
       <title>poco源码安装</title>
       <link>https://pj-x86.github.io/2020/poco%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/</link>
       <pubDate>Thu, 28 May 2020 23:04:19 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/2020/poco%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/</guid>
-      <description>redhat7.7-x86_64 源码安装 poco-1.9.4 依赖 c++11，不依赖 c++14(poco-1.10.0 版本开始强制依赖 c++14) mkdir cmake-build cd cmake-build cmake -DCMAKE_INSTALL_PREFIX=/usr/local/poco-1.9.4 --build . --target install .. make -j make install 配置环境变量 vi ·/.bash_profile export POCO_HOME=/usr/local/poco-1.9.4 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$POCO_HOME/lib</description>
+      <description>redhat7.7-x86_64 源码安装 poco-1.9.4 链接到标题 依赖 c++11，不依赖 c++14(poco-1.10.0 版本开始强制依赖 c++14) mkdir cmake-build cd cmake-build cmake -DCMAKE_INSTALL_PREFIX=/usr/local/poco-1.9.4 --build . --target install .. make -j make install 配置环境变量 vi ·/.bash_profile export</description>
     </item>
-    
   </channel>
 </rss>

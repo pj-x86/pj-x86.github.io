@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>eureka on pj-x86&#39;s blog</title>
+    <title>Eureka on pj-x86&#39;s blog</title>
     <link>https://pj-x86.github.io/tags/eureka/</link>
-    <description>Recent content in eureka on pj-x86&#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Eureka on pj-x86&#39;s blog</description>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 29 Dec 2019 14:48:09 +0800</lastBuildDate><atom:link href="https://pj-x86.github.io/tags/eureka/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 29 Dec 2019 14:48:09 +0800</lastBuildDate>
+    <atom:link href="https://pj-x86.github.io/tags/eureka/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>改造Go Kit官方示例对接eureka</title>
       <link>https://pj-x86.github.io/2019/%E6%94%B9%E9%80%A0go-kit%E5%AE%98%E6%96%B9%E7%A4%BA%E4%BE%8B%E5%AF%B9%E6%8E%A5eureka/</link>
       <pubDate>Sun, 29 Dec 2019 14:48:09 +0800</pubDate>
-      
       <guid>https://pj-x86.github.io/2019/%E6%94%B9%E9%80%A0go-kit%E5%AE%98%E6%96%B9%E7%A4%BA%E4%BE%8B%E5%AF%B9%E6%8E%A5eureka/</guid>
-      <description>前言 近期学习 go-kit 的官方示例时，发现并未有对接 eureka 的参考代码，而我司目前的微服务架构是基于 spring cloud ，服务注册中心用的是 eureka ，因此，便试着改造一下官方的例</description>
+      <description>前言 链接到标题 近期学习 go-kit 的官方示例时，发现并未有对接 eureka 的参考代码，而我司目前的微服务架构是基于 spring cloud ，服务注册中心用的是 eureka ，因此，便试着改造一</description>
     </item>
-    
   </channel>
 </rss>
