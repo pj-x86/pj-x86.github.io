@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Httpclient on pj-x86&#39;s blog</title>
+    <link>https://pj-x86.github.io/tags/httpclient/</link>
+    <description>Recent content in Httpclient on pj-x86&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 13 Jul 2024 07:55:29 +0800</lastBuildDate>
+    <atom:link href="https://pj-x86.github.io/tags/httpclient/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>URL 中包含特殊字符(&#43;)导报接口访问报错排查分析</title>
+      <link>https://pj-x86.github.io/2024/url_contain_special_char_httpclient_bug/</link>
+      <pubDate>Sat, 13 Jul 2024 07:55:29 +0800</pubDate>
+      <guid>https://pj-x86.github.io/2024/url_contain_special_char_httpclient_bug/</guid>
+      <description>背景介绍 链接到标题 在自研对象存储服务（类似 S3 协议）的接口开发中，我们使用Java HttpClient 发送文件上传请求，如果请求的 URL 包含特殊字符加号(如中文文件</description>
+    </item>
+  </channel>
+</rss>
